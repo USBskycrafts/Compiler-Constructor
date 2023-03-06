@@ -1,0 +1,33 @@
+(@go
+    (@go 
+        0 0
+        rdi <- 7                // argument = 7
+        mem rsp -8 <- :go_ret   // store return address
+        call @func 1
+        :go_ret
+            mem rsp -8 <- :ret2 // store return address
+            rdi <- 100          
+            rsi <- 8
+            rdx <- 74
+            call @foo 2         // foo(100, 8, 74)
+        :ret2
+            return
+    )   
+    (@func
+        1 0
+        rax <- rdi     // rax = 7
+        rax &= 9       // rax = 1001 & 0111 = 001 = 1
+        rax += 4       // rax = 5
+        return
+    )
+    (@foo
+        2 0
+        rax <- rdi
+        rax -= rsi         // rax = 100 - 8 = 92 = 1011100
+        r10 <- 44           // r10 = 101100
+        r10 >>= 2           // r10 = 001011 = 11
+        r10 -= rdx          // r10 = -63 = 11000001
+        rax &= r10          
+        return
+    )
+)

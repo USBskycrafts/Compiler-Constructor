@@ -1,0 +1,35 @@
+(@cjp_te
+    (@cjp_te
+        0 3
+        mem rsp 0 <- r12 
+        mem rsp 8 <- r13
+        mem rsp 16 <- r14
+        rax <- 5
+        r11 <- mem rsp 8    // r11 = r13
+        mem rsp 8 <- 2      // overwrite r13
+        r10 <- 3
+        r10 += rax          // r10 = 8
+        r10 &= 9            // r10 = 8
+        r10 -= 1            // r10 = 7
+        goto :start         // skip instructions
+            rdi <- r10
+            call print 1
+            r10 <- 1
+            r10 @ r10 r10 4
+            rdi <- r10
+            call print 1
+        :end
+            rdi <- 9
+            rsi <- 5
+            call allocate 2     // allocate array [2]*9
+            r12 <- mem rsp 0    // restore registers
+            r13 <- mem rsp 8
+            r14 <- mem rsp 16
+            goto :ret
+        :start
+            rax <- 1
+            goto :end
+        :ret
+            return
+    )
+)

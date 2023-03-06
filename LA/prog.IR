@@ -1,0 +1,59 @@
+define void @main () {
+:entry_point0
+	int64 %newVar0i
+	int64 %newVar0n
+	int64 %newVar0sum
+	int64 %newVar1temp
+	int64 %newVar1temp0
+	int64 %newVar1temp02
+	int64 %newVar1temp023
+	int64 %newVar1temp0230
+	int64 %newVar1temp024
+	int64 %newVar1temp1
+	int64 %newVar_ciao_0
+	br :entry_point1
+	
+:entry_point1
+	
+	
+	%newVar0sum <- 1
+	
+	%newVar0i <- 1
+	
+	%newVar0n <- 1
+	%newVar0n <- call input ()
+	br :body
+	
+:body
+	
+	
+	%newVar1temp <- 1
+	%newVar1temp <- call input ()
+	%newVar1temp0 <- %newVar0sum >> 1
+	%newVar1temp1 <- %newVar1temp >> 1
+	%newVar0sum <- %newVar1temp0 + %newVar1temp1
+	%newVar0sum <- %newVar0sum << 1
+	%newVar0sum <- %newVar0sum + 1
+	%newVar1temp02 <- %newVar0i >> 1
+	%newVar0i <- %newVar1temp02 + 1
+	%newVar0i <- %newVar0i << 1
+	%newVar0i <- %newVar0i + 1
+	br :new_label0
+:new_label0
+	
+	
+	%newVar_ciao_0 <- 1
+	%newVar1temp023 <- %newVar0i >> 1
+	%newVar1temp024 <- %newVar0n >> 1
+	%newVar_ciao_0 <- %newVar1temp023 < %newVar1temp024
+	%newVar_ciao_0 <- %newVar_ciao_0 << 1
+	%newVar_ciao_0 <- %newVar_ciao_0 + 1
+	%newVar1temp0230 <- %newVar_ciao_0 >> 1
+	br %newVar1temp0230 :body :exit
+:exit
+	
+	call print (%newVar0sum)
+	return
+}
+
+

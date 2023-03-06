@@ -1,0 +1,54 @@
+define @main (){
+:entry_point0
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	br :entry_point1
+
+:entry_point1
+	%newVar0sum <- 1
+	%newVar0i <- 1
+	%newVar0n <- 1
+	%newVar0n <- call input ()
+	br :body
+
+:body
+	%newVar1temp <- 1
+	%newVar1temp <- call input ()
+	%newVar1temp0 <- %newVar0sum >> 1
+	%newVar1temp1 <- %newVar1temp >> 1
+	%newVar0sum <- %newVar1temp0 + %newVar1temp1
+	%newVar0sum <- %newVar0sum << 1
+	%newVar0sum <- %newVar0sum + 1
+	%newVar1temp02 <- %newVar0i >> 1
+	%newVar0i <- %newVar1temp02 + 1
+	%newVar0i <- %newVar0i << 1
+	%newVar0i <- %newVar0i + 1
+	br :new_label0
+
+:new_label0
+	%newVar_ciao_0 <- 1
+	%newVar1temp023 <- %newVar0i >> 1
+	%newVar1temp024 <- %newVar0n >> 1
+	%newVar_ciao_0 <- %newVar1temp023 < %newVar1temp024
+	%newVar_ciao_0 <- %newVar_ciao_0 << 1
+	%newVar_ciao_0 <- %newVar_ciao_0 + 1
+	%newVar1temp0230 <- %newVar_ciao_0 >> 1
+	br %newVar1temp0230 :body
+	br :exit
+
+:exit
+	call print (%newVar0sum)
+	return
+
+
+}
+

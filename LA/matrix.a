@@ -1,0 +1,108 @@
+ void main() {
+:entry
+  int64 m
+  int64 n
+  int64[][] matrix_x
+  int64[][] matrix_y
+  int64[][] matrix_z
+
+  m <-  input()
+  n <-  input()
+  matrix_x <- new Array(m, n)
+   load_matrix(matrix_x)
+  m <-  input()
+  n <-  input()
+  matrix_y <- new Array(m, n)
+   load_matrix(matrix_y)
+  matrix_z <- new Array(n, n)
+   matrix_mul(matrix_x, matrix_y, matrix_z)
+   print(matrix_z)
+  return
+}
+
+
+ void load_matrix(int64[][] matrix) {
+:entry
+  int64 m
+  int64 n
+  int64 i
+  int64 j
+  int64 var
+  int64 mark
+  m <- length matrix 0
+  n <- length matrix 1
+
+  i <- 0
+  br :loop1_body
+:loop1_add
+  i <- i + 1
+  mark <- i < m
+  br mark :loop1_body :exit
+:loop1_body
+  j <- 0
+  br :loop2_body
+:loop2_add
+  j <- j + 1
+  mark <- j < n
+  br mark :loop2_body :loop1_add
+:loop2_body
+  var <-  input()
+  matrix[i][j] <- var
+  br :loop2_add
+:exit
+  return
+}
+
+ void matrix_mul(int64[][] x, int64[][] y, int64[][] z) {
+:entry
+  int64 m
+  int64 l
+  int64 i
+  int64 j
+  int64 k
+  int64 mark
+  int64 var
+  int64 tmp
+  int64 t1
+  int64 t2
+  m <- length z 0
+  l <- length x 1
+  i <- 0
+  br :loop1_body
+:loop1_add
+  i <- i + 1
+  mark <- i < m
+  br mark :loop1_body :exit
+:loop1_body
+  j <- 0
+  br :loop2_body
+:loop2_add
+  z[i][j] <- var
+  j <- j + 1
+  mark <- j < m
+  br mark :loop2_body :loop1_add
+:loop2_body
+  k <- 0
+  var <- 0
+  br :loop3_body
+:loop3_add
+  k <- k + 1
+  mark <- k < l
+  br mark :loop3_body :loop2_add
+:loop3_body
+  t1 <- x[i][k]
+  t2 <- y[k][j]
+  tmp <- t1 * t2
+  var <- var + tmp
+  // debug_print(var)
+  br :loop3_add
+:exit
+  return
+}
+
+
+ void debug_print(int64 x) {
+:begin
+   print(x)
+  return
+}

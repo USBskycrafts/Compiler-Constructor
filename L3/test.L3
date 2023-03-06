@@ -1,0 +1,5 @@
+define @main(%self, %a, %b) {
+  %var <- %a + 16
+  %a <- load %var
+  return
+}

@@ -1,0 +1,74 @@
+define void @main() {
+:entry
+  int64[] %arr
+  int64 %n
+  int64 %i
+  int64 %j
+  int64 %k
+  int64 %bound_i
+  int64 %bound_j
+  int64 %mark
+  int64 %var
+  int64 %former
+  int64 %latter
+  %n <- call input()
+  %arr <- new Array(%n)
+  %n <- %n >> 1
+
+  %i <- 0
+  br :begin
+:loop
+  %i <- %i + 1
+  br :begin
+:begin
+  %mark <- %i < %n
+  br %mark :body :sort
+:body
+  %var <- call input()
+  %arr[%i] <- %var
+  br :loop
+
+:sort
+  %i <- 0
+  br :sort_body
+:sort_add
+  %i <- %i + 1
+  %bound_i <- %n - 1
+  %mark <- %i < %bound_i
+  br %mark :sort_body :output
+:sort_body
+  %j <- 0
+  br :sort_inner
+:inner_add
+  %j <- %j + 1
+  %bound_j <- %n - 1
+  %bound_j <- %bound_j - %i
+  %mark <- %j < %bound_j
+  br %mark :sort_inner :sort_add
+:sort_inner
+  %k <- %j + 1
+  %former <- %arr[%j]
+  %latter <- %arr[%k]
+  %mark <- %former > %latter
+  br %mark :swap :exit
+:swap
+  %arr[%k] <- %former
+  %arr[%j] <- %latter
+  br :exit
+:exit
+  br :inner_add
+:output
+  call print(%arr)
+  return
+
+}
+
+
+
+define void @debug_print(int64 %x) {
+:begin
+  %x <- %x << 1
+  %x <- %x + 1
+  call print(%x)
+  return
+}

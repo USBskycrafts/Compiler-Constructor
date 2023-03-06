@@ -1,0 +1,43 @@
+(@test2
+    (@test2
+        // add or subtract 1 to all positions in an array depending on if array index is even or odd
+
+        0 2
+        rdx <- 11                       // constant array length
+        rdi <- rdx                      // number of array positions to allocate (not encoded) 11 = 1011 -> 5 array elements
+        rsi <- 1                        // value to initialize all array positions to (encoded)
+
+        mem rsp 0 <- rdx                // caller-save rdx register
+        call allocate 2
+        rdx <- mem rsp 0                // retrieve rdx
+
+        rdi <- rax                      // load array into rdi
+
+        r8 <- 0                         // for loop index
+
+        rdx >>= 1                       // decode rdx value
+
+        :loop                           // for (int r8 = 0, r8 < rdx, r8++)
+        cjump rdx <= r8 :loop_exit      // exit condition
+
+        r8 += 1
+
+        rcx @ rdi r8 8                  // assign rcx to point to an array index
+        rsi <- r8
+        rsi &= 1                        // determine if rsi (index) is odd or even
+
+        cjump rsi = 0 :sub              // if rsi is even, subtract a value
+
+        mem rcx 0 += 2                  // add 1 to value
+        goto :loop
+
+        :sub
+        mem rcx 0 -= 2                  // subtract 1 from value
+        goto :loop
+
+        :loop_exit
+
+        call print 1
+        return
+    )
+)

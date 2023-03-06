@@ -1,0 +1,48 @@
+(@test1
+    (@test1
+        0 0     // # arg inputs , # locals
+
+        // input values defined in the function
+        rdi <- 2                        // first argument
+        rsi <- 8                        // second argument
+
+        cjump rdi < rsi :call_divide    // if rdi < rsi, then shift rsi rdi times,
+                                        // otherwise add the two together
+        // comparison is false, call add
+        mem rsp -8 <- :add_ret
+        call @add 2
+        :add_ret
+        goto :end
+
+        :call_divide
+        mem rsp -8 <- :divide_ret
+        call @divide 2
+        :divide_ret
+
+        :end
+        rdi <- rax                      // put result of either of the functions into rdi
+                                        // so it can be printed
+        rdi <<= 1                       // encode
+        rdi += 1                        // encode
+
+        call print 1                    // print output of either function
+        return
+    )
+
+    (@divide
+        2 0
+        // right shift rsi by rdi
+        rcx <- rdi
+        rsi >>= rcx
+        rax <- rsi
+        return
+    )
+
+    (@add
+        2 0
+        // add the two arguments together
+        rdi += rsi
+        rax <- rdi
+        return
+    )
+)

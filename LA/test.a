@@ -1,0 +1,9 @@
+void main() {
+  int64[][] var
+  var <- new Array(3, 3)
+  var[0][0] <- 1
+  int64 var2
+  var2 <- var[0][0]
+  print(var2)
+  print(var)
+}

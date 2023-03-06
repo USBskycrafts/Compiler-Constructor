@@ -1,0 +1,92 @@
+define @main (%self, %a, %b) {
+	%var <- %a + 16
+	%a <- load %var
+	return 
+}
+Instruction selection for "@main" (1 basic blocks)
+  Basic block with 3 instructions
+    %var <- %a + 16
+    %a <- load %var
+    return 
+  Syntax trees for the current basic block
+    %var <- %a + 16
+
+    %a <- load %var
+
+    return 
+
+  Tile tree %var <- %a + 16
+    Checking tile ReturnTile
+    Checking tile LoadTile
+    Checking tile StoreTile
+    Checking tile AssignmentTile
+    Checking tile OperationTwoOperandsTile
+      Applicable
+      Currently the best
+    Checking tile ComparisonTile
+    Checking tile GotoTile
+    Checking tile BrTile
+    Checking tile LabelTile
+    Checking tile CallTile
+    Checking tile RuntimeCallTile
+    Checking tile OperationTile
+    Checking tile ComputeAddressAndLoadTile
+    Checking tile ComputeAddressAndStoreTile
+    Checking tile LEALeftTile
+    Checking tile LEARightTile
+  Tile tree %a <- load %var
+    Checking tile ReturnTile
+    Checking tile LoadTile
+      Applicable
+      Currently the best
+    Checking tile StoreTile
+    Checking tile AssignmentTile
+    Checking tile OperationTwoOperandsTile
+    Checking tile ComparisonTile
+    Checking tile GotoTile
+    Checking tile BrTile
+    Checking tile LabelTile
+    Checking tile CallTile
+    Checking tile RuntimeCallTile
+    Checking tile OperationTile
+    Checking tile ComputeAddressAndLoadTile
+    Checking tile ComputeAddressAndStoreTile
+    Checking tile LEALeftTile
+    Checking tile LEARightTile
+  Tile tree return 
+    Checking tile ReturnTile
+      Applicable
+      Currently the best
+    Checking tile LoadTile
+    Checking tile StoreTile
+    Checking tile AssignmentTile
+    Checking tile OperationTwoOperandsTile
+    Checking tile ComparisonTile
+    Checking tile GotoTile
+    Checking tile BrTile
+    Checking tile LabelTile
+    Checking tile CallTile
+    Checking tile RuntimeCallTile
+    Checking tile OperationTile
+    Checking tile ComputeAddressAndLoadTile
+    Checking tile ComputeAddressAndStoreTile
+    Checking tile LEALeftTile
+    Checking tile LEARightTile
+(@main
+	3 0
+	return
+)
+
+Register allocation for the L2 function "@main"
+  Iteration 0
+    Liveness analysis
+    Interference graph
+    Graph coloring
+(@main
+	3 0
+	return
+)
+
+(@main
+
+@main)

@@ -1,0 +1,11 @@
+define void @main() {
+  :entry
+  int64 %x
+  %x <- 1
+  %x <- %x + 1
+  br %x :T :F
+:T
+  return
+:F
+  return
+}
