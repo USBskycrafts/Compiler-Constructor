@@ -56,7 +56,7 @@ namespace LB {
   std::string DeclareInst::GenerateCode() {
     std::stringstream code;
     for(auto var : vars_) {
-      code << var->GetType() << " " << var->GetCode() << "\t";
+      code << var->GetType() << " " << var->GetCode() << "\n\t";
     }
     code << "\n";
     return code.str();
@@ -135,18 +135,18 @@ namespace LB {
     return "return" + (ret_ ? ret_->GetCode() : "");
   }
 
-  std::string WhileStatement::GenerateCode() {
+  std::string WhileStatement::ToString() {
     std::stringstream code;
-    code << "while (" << cmp_->GetCode() << ")" 
+    code << "while (" << cmp_->GetCode() << ") " 
     << true_label_->GetCode() << " " << false_label_->GetCode();
     return code.str();
   }
 
-  std::string WhileStatement::ToString() {
+  std::string WhileStatement::GenerateCode() {
     std::stringstream code;
     auto id = std::to_string((long long)this);
     auto var_name = "newV" + id;
-    code << "\tint64 " << var_name << "\n";
+    code << "\n\tint64 " << var_name << "\n";
     code << "\t" << var_name << " " <<cmp_->GetCode() <<"\n";
     code << "\tbr " << var_name << " " << true_label_->GetCode() << " " << false_label_->GetCode();
     return code.str();
@@ -231,7 +231,7 @@ namespace LB {
 
   std::string AllocateTuple::ToString() {
     std::stringstream code;
-    code << lhs_->GetCode() << " <- Tuple(" << index_->GetCode() << ")";
+    code << lhs_->GetCode() << " <- new Tuple(" << index_->GetCode() << ")";
     return code.str();
   }
 
@@ -241,7 +241,7 @@ namespace LB {
 
   std::string AllocateArray::ToString() {
     std::stringstream code;
-    code << lhs_->GetCode() << " <- Array(";
+    code << lhs_->GetCode() << " <- new Array(";
     for(int i = 0; i < args_.size(); i++) {
       code << (i == 0 ? "" : ", ") << args_[i]->GetCode();
     }

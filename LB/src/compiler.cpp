@@ -79,14 +79,14 @@ int main(
    * Generate x86_64 assembly.
    */
   if (enable_code_generator){
-    auto f = freopen("prog.IR", "w", stdout);
+    auto f = freopen("prog.a", "w", stdout);
     std::stringstream code;
     for(auto f : p.functions) {
       code << f->type << " " << f->callee << "(";
       for(int i = 0; i < f->args.size(); i++) {
         code << (i == 0 ? "" : ", ") << f->args[i]->GetType() << " " << f->args[i]->GetCode();
       }
-      code << "){\n\t";
+      code << ") {\n\t";
       code << f->scope->GenerateCode();
       code << "}\n";
     }

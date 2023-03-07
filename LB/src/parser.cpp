@@ -202,7 +202,8 @@ namespace LB {
       seps,
       pegtl::sor<
         number_rule,
-        name_use_rule
+        name_use_rule,
+        label_rule
       >
     > {};
 
@@ -211,6 +212,7 @@ namespace LB {
       name_use_rule,
       seps,
       TAOCPP_PEGTL_STRING("<-"),
+      seps,
       pegtl::sor<
         number_rule,
         name_use_rule
@@ -239,6 +241,8 @@ namespace LB {
         number_rule,
         name_use_rule
       >,
+      seps,
+      op_rule,
       seps,
       pegtl::sor<
         number_rule,
@@ -281,6 +285,8 @@ namespace LB {
         number_rule,
         name_use_rule
       >,
+      seps,
+      op_rule,
       seps,
       pegtl::sor<
         number_rule,
@@ -438,6 +444,10 @@ namespace LB {
 
   struct instruction_rule :
     pegtl::sor<
+      pegtl::seq<pegtl::at<int64_declare_rule>, int64_declare_rule>,
+      pegtl::seq<pegtl::at<code_declare_rule>, code_declare_rule>,
+      pegtl::seq<pegtl::at<tuple_declare_rule>, tuple_declare_rule>,
+      pegtl::seq<pegtl::at<array_declare_rule>, array_declare_rule>,
       pegtl::seq<pegtl::at<binary_op_rule>, binary_op_rule>,
       pegtl::seq<pegtl::at<load_container_rule>, load_container_rule>,
       pegtl::seq<pegtl::at<store_container_rule>, store_container_rule>,
@@ -472,11 +482,13 @@ namespace LB {
 
   struct scope_rule :
     pegtl::seq<
+      seps,
       scope_begin,
       seps,
       instructions_rule,
       seps,
-      scope_end
+      scope_end,
+      seps
     > {};
 
 
@@ -497,25 +509,27 @@ namespace LB {
 
   struct function_name_declare :  name {};
 
+  struct name_arg_rule : name {};
+
   struct int64_arg_declare : 
     pegtl::seq<
       TAOCPP_PEGTL_STRING("int64"),
       seps,
-      names_rule
+      name_arg_rule
     > {};
 
    struct code_arg_declare :
     pegtl::seq<
       TAOCPP_PEGTL_STRING("code"),
       seps,
-      names_rule
+      name_arg_rule
     > {};
 
   struct tuple_arg_declare :
     pegtl::seq<
       TAOCPP_PEGTL_STRING("tuple"),
       seps,
-      names_rule
+      name_arg_rule
     > {};
 
   struct array_arg_declare :
@@ -526,8 +540,10 @@ namespace LB {
         square_bracket_rule
       >,
       seps,
-      names_rule
+      name_arg_rule
     > {};
+
+
 
   struct arg_declare : 
     pegtl::sor<
@@ -549,7 +565,6 @@ namespace LB {
     > {};
 
   
-  struct function_scope_rule : scope_rule {};
 
   struct function_rule :
     pegtl::seq<
@@ -565,7 +580,7 @@ namespace LB {
       seps,
       pegtl::one<')'>,
       seps,
-      function_scope_rule
+      scope_rule
     > {};
 
   struct functions_rule :
@@ -746,7 +761,7 @@ namespace LB {
   template<> struct action <name_use_rule> {
     template<typename Input>
     static void apply(const Input& in, Program& p) {
-      Variable* var;
+      Variable* var = nullptr;
       for(auto i = parsed_scopes.rbegin(); i != parsed_scopes.rend(); i++) {
         auto scope = *i;
         try {
@@ -782,11 +797,20 @@ namespace LB {
     }
   };
 
+  template<> struct action <name_arg_rule> {
+    template<typename Input>
+    static void apply(const Input& in, Program& p) {
+      declared_vars.push_back(in.string());
+    }
+  };
+
   template<> struct action <int64_arg_declare> {
     template<typename Input>
     static void apply(const Input& in, Program& p) {
       auto f = p.functions.back();
-      f->args.push_back(new Int64(in.string()));
+      auto name = declared_vars.back();
+      declared_vars.pop_back();
+      f->args.push_back(new Int64(name));
     }
   };
 
@@ -794,7 +818,9 @@ namespace LB {
     template<typename Input>
     static void apply(const Input& in, Program& p) {
       auto f = p.functions.back();
-      f->args.push_back(new Array(in.string(), square_bracket_rule::pair_number));
+      auto name = declared_vars.back();
+      declared_vars.pop_back();
+      f->args.push_back(new Array(name, square_bracket_rule::pair_number));
       square_bracket_rule::pair_number = 0;
     }
   };
@@ -803,7 +829,9 @@ namespace LB {
     template<typename Input>
     static void apply(const Input& in, Program& p) {
       auto f = p.functions.back();
-      f->args.push_back(new Tuple(in.string()));
+      auto name = declared_vars.back();
+      declared_vars.pop_back();
+      f->args.push_back(new Tuple(name));
     }
   };
 
@@ -811,7 +839,9 @@ namespace LB {
     template<typename Input>
     static void apply(const Input& in, Program& p) {
       auto f = p.functions.back();
-      f->args.push_back(new Code(in.string()));
+      auto name = declared_vars.back();
+      declared_vars.pop_back();
+      f->args.push_back(new Code(name));
     }
   };
 
@@ -819,10 +849,20 @@ namespace LB {
     template<typename Input>
     static void apply(const Input& in, Program& p) {
       auto f = p.functions.back();
-      auto scope = new Scope;
-      if(!parsed_scopes.empty()) {
-        scope->SetScope(parsed_scopes.back());
+      if(f->scope == nullptr) {
+        auto scope = new Scope;
+        f->scope = scope;
+        for(auto arg : f->args) {
+          scope->SetUniqueName(arg->GetCode(), arg->GetCode());
+          scope->SetVarName(arg->GetCode(), arg);
+        }
+        parsed_scopes.push_back(scope);
+        return;
       }
+      auto scope = new Scope;
+      auto f_scope = parsed_scopes.back();
+      scope->SetScope(f_scope);
+      f_scope->InsertInstructions(scope);
       parsed_scopes.push_back(scope);
     }
   };
@@ -831,19 +871,6 @@ namespace LB {
     template<typename Input>
     static void apply(const Input& in, Program& p) {
       parsed_scopes.pop_back();
-    }
-  };
-
-  template<> struct action <function_scope_rule> {
-    template<typename Input>
-    static void apply(const Input& in, Program& p) {
-      auto f = p.functions.back();
-      auto scope = parsed_scopes.back();
-      f->scope = scope;
-      for(auto arg : f->args) {
-        f->scope->SetUniqueName(arg->GetCode(), arg->GetCode());
-        f->scope->SetVarName(arg->GetCode(), arg);
-      }
     }
   };
 
@@ -885,6 +912,7 @@ namespace LB {
     static void apply(const Input& in, Program& p) {
       auto scope = parsed_scopes.back();
       auto label = static_cast<Label*>(parsed_items.back());
+      parsed_items.pop_back();
       auto inst = new LabelInst(label);
       scope->InsertInstructions(inst);
       inst->SetScope(scope);
@@ -1105,6 +1133,7 @@ namespace LB {
           args.push_back(*i);
         }
       }
+      parsed_items.clear();
       auto inst = new AllocateArray(lhs, args);
       scope->InsertInstructions(inst);
       inst->SetScope(scope);
@@ -1132,35 +1161,38 @@ namespace LB {
       // mapping loop
       auto f = p.functions.back();
       std::stack<WhileStatement*> loop_stack;
-      std::stack<Scope*> scope_stack;
-      scope_stack.push(f->scope);
-      while(!scope_stack.empty()) {
-        auto scope = scope_stack.top();
-        scope_stack.pop();
+      std::vector<Instruction*> instructions;
+
+      std::function<void(Scope*)> insert_inst = [&](Scope* scope) -> void {
         for(auto inst : scope->GetInstructions()) {
           if(auto scope = dynamic_cast<Scope*>(inst)) {
-            scope_stack.push(scope);
-          } 
-          if(!loop_stack.empty()) {
-            auto w = loop_stack.top();
-            inst->SetLoop(w);
+            insert_inst(scope);
+          } else {
+            instructions.push_back(inst);
           }
-          if(auto label_inst = dynamic_cast<LabelInst*>(inst)) {
-            for(auto [w, label] : begin_while) {
-              if(label == label_inst->ToString()) {
-                loop_stack.push(w);
-                break;
-              }
+        }
+      };
+      insert_inst(f->scope);
+      for(auto inst : instructions) {
+        if(!loop_stack.empty()) {
+          auto w = loop_stack.top();
+          inst->SetLoop(w);
+        }
+        if(auto label = dynamic_cast<LabelInst*>(inst)) {
+          for(auto [loop, label] : begin_while) {
+            if(inst->ToString() == label) {
+              loop_stack.push(loop);
             }
-            for(auto [w, label] : end_while) {
-              if(label == label_inst->ToString()) {
-                loop_stack.pop();
-                break;
-              }
+          }
+          for(auto [loop, label] : end_while) {
+            if(inst->ToString() == label) {
+              loop_stack.pop();
             }
           }
         }
       }
+      
+
     }
   };
   

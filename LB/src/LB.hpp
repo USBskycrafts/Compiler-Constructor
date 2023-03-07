@@ -5,6 +5,8 @@
 #include <vector>
 #include <map>
 
+#include "utils.hpp"
+
 namespace LB {
 
   class Item;
@@ -114,6 +116,7 @@ namespace LB {
       std::string GetUniqueName(std::string name) { return name_mapper_.at(name); }
       void SetUniqueName(std::string name, std::string u_name) { 
         if(name_mapper_.count(name)) {
+          DEBUG_COUT << "there is already a name" << std::endl;
           abort();
         }
         name_mapper_[name] = u_name; 
@@ -121,6 +124,7 @@ namespace LB {
       Variable* GetVar(std::string var_name) { return vars_mapper_.at(var_name); }
       void SetVarName(std::string name, Variable* var) {
         if(vars_mapper_.count(name)) {
+          DEBUG_COUT << "redefine name" << std::endl;
           abort();
         }
         vars_mapper_[name] = var;
