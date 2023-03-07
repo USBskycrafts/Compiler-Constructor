@@ -2,7 +2,7 @@
 
 
 #include <map>
-
+#pragma GCC optimize("O3","unroll-loops")
 #include "L2.hpp"
 #include "visitor.hpp"
 

@@ -102,7 +102,7 @@ tuple curry(tuple F)
     tuple cF
 
     cF <- new Tuple(2)
-    cF[0] <- :curry_arg1
+    cF[0] <- curry_arg1
     cF[1] <- F
     return cF
 }

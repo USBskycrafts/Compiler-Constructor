@@ -1,7 +1,7 @@
 #pragma once
 #include <stack>
 #include <set>
-
+#pragma GCC optimize("O3","unroll-loops")
 #include "L2.hpp"
 #include "interfernce_graph.hpp"
 #include "spiller.hpp"

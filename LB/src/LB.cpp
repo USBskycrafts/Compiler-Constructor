@@ -104,10 +104,10 @@ namespace LB {
 
   std::string IfStatement::GenerateCode() {
     std::stringstream code;
-    auto id = std::to_string((long long)this);
-    auto var_name = "newV" + id;
+    static int counter = 0;
+    auto var_name = "newV_if" + std::to_string(counter++);
     code << "\tint64 " << var_name << "\n";
-    code << "\t" << var_name << " " <<cmp_->GetCode() <<"\n";
+    code << "\t" << var_name << " <- " <<cmp_->GetCode() <<"\n";
     code << "\tbr " << var_name << " " << true_label_->GetCode() << " " << false_label_->GetCode();
     return code.str();
   }
@@ -132,7 +132,7 @@ namespace LB {
   }
 
   std::string ReturnInst::ToString() {
-    return "return" + (ret_ ? ret_->GetCode() : "");
+    return "return " + (ret_ ? ret_->GetCode() : "");
   }
 
   std::string WhileStatement::ToString() {
@@ -144,10 +144,10 @@ namespace LB {
 
   std::string WhileStatement::GenerateCode() {
     std::stringstream code;
-    auto id = std::to_string((long long)this);
-    auto var_name = "newV" + id;
+    static int counter = 0;
+    auto var_name = "newV_while" + std::to_string(counter++);
     code << "\n\tint64 " << var_name << "\n";
-    code << "\t" << var_name << " " <<cmp_->GetCode() <<"\n";
+    code << "\t" << var_name << " <- " <<cmp_->GetCode() <<"\n";
     code << "\tbr " << var_name << " " << true_label_->GetCode() << " " << false_label_->GetCode();
     return code.str();
   }
@@ -191,7 +191,7 @@ namespace LB {
 
   std::string StoreContainer::ToString() {
     std::stringstream code;
-    code << rhs_->GetCode();
+    code << lhs_->GetCode();
     for(auto index : indexes_) {
       code << '[' + index->GetCode() + ']';
     }

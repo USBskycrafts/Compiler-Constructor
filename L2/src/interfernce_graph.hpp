@@ -1,7 +1,7 @@
 #pragma once
 #include <map>
 
-
+#pragma GCC optimize("O3","unroll-loops")
 #include "interfernce_graph.hpp"
 #include "L2.hpp"
 #include "liveness_analysis.hpp"

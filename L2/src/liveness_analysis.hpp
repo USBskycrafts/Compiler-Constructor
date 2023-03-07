@@ -4,7 +4,7 @@
 #include <map>
 #include <boost/dynamic_bitset.hpp>
 
-
+#pragma GCC optimize("O3","unroll-loops")
 #include "L2.hpp"
 #include "control_flow_graph.hpp"
 #include "visitor.hpp"

@@ -6,7 +6,7 @@
 #include "L2.hpp"
 #include "color_selector.hpp"
 #include "spiller.hpp"
-
+#pragma GCC optimize("O3","unroll-loops")
 
 namespace L2 {
   class RegisterAllocator {

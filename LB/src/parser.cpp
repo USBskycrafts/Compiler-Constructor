@@ -14,6 +14,7 @@
 #include <memory>
 #include <stack>
 #include <algorithm>
+#include <functional>
 
 #include <tao/pegtl.hpp>
 #include <tao/pegtl/analyze.hpp>
@@ -494,17 +495,18 @@ namespace LB {
 
   struct function_type :
     pegtl::sor<
+      pegtl::seq<
+        TAOCPP_PEGTL_STRING("int64"),
+        pegtl::plus<
+          seps,
+          square_bracket_rule,
+          seps
+        >
+      >,
       TAOCPP_PEGTL_STRING("int64"),
       TAOCPP_PEGTL_STRING("code"),
       TAOCPP_PEGTL_STRING("void"),
-      TAOCPP_PEGTL_STRING("tuple"),
-      pegtl::seq<
-        TAOCPP_PEGTL_STRING("int64"),
-        seps,
-        pegtl::plus<
-          square_bracket_rule
-        >
-      >
+      TAOCPP_PEGTL_STRING("tuple")
     > {};
 
   struct function_name_declare :  name {};
@@ -945,6 +947,7 @@ namespace LB {
     static void apply(const Input& in, Program& p) {
       auto scope = parsed_scopes.back();
       auto label = static_cast<Label*>(parsed_items.back());
+      parsed_items.pop_back();
       auto inst = new JumpInst(label);
       scope->InsertInstructions(inst);
       inst->SetScope(scope);
@@ -1182,16 +1185,20 @@ namespace LB {
           for(auto [loop, label] : begin_while) {
             if(inst->ToString() == label) {
               loop_stack.push(loop);
+              break;
             }
           }
           for(auto [loop, label] : end_while) {
             if(inst->ToString() == label) {
               loop_stack.pop();
+              break;
             }
           }
         }
       }
-      
+      begin_while.clear();
+      end_while.clear();
+      cond_labels.clear();
 
     }
   };
