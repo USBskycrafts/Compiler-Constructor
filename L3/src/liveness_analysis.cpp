@@ -1,101 +1,133 @@
-
+#include "liveness_analysis.hpp"
+#include <algorithm>
 #include <queue>
 
-#include "L3.hpp"
-#include "control_flow_analysis.hpp"
-#include "liveness_analysis.hpp"
-#include "utils.hpp"
+namespace LivenessAnalysis {
+  std::map<L3::Instruction*, AnalysisResult*> results;
 
-namespace L3 {
-  LivenessAnalysis::LivenessAnalysis(Function* f) {
-    f_ = f;
-    analyze_ = new ControlFlowAnalysis(f);
-    GenerateBitSet();
-    GenerateInAndOut();
+  void SetControlFlow(L3::Function* function) {
+    auto cfg = new ControlFlowGenerator(function);
+    cfg->GenerateSuccessors();
+    cfg->GeneratePredecessors();
   }
 
-  void LivenessAnalysis::GenerateBitSet() {
-    unsigned counter = 0;
-    DEBUG_COUT << "\n" << f_->to_string();
-    for(auto variable : f_->get_locals()) {
-      DEBUG_COUT << "---> has variable " << variable->to_string() << std::endl;
-      std::string mask(f_->get_locals().size(), '0');
-      mask[counter++] = '1';
-      bitset bits(mask);
-      DEBUG_COUT << bits << " with bits size " << bits.size() << std::endl;
-      variable_mapper[variable] = bits;
+  AnalysisResult* GenerateInAndOut(L3::Function* function) {
+    std::queue<L3::Instruction*> inst_list;
+    for(auto inst : function->instructions) {
+      auto result =  new AnalysisResult;
+      result->gens.emplace(inst->GetUses());
+      result->kills.emplace(inst->GetDefs());
+      results[inst.get()] = result;
+      inst_list.push(inst.get());
     }
-    for(auto inst : f_->get_instructions()) {
-      auto local_size = f_->get_locals().size();
-      gen_[inst] = bitset(local_size, 0);
-      kill_[inst] = bitset(local_size, 0);
-      DEBUG_COUT << inst->to_string();
-      for(auto def : inst->get_defs()) {
-        if(auto variable = dynamic_cast<Variable*>(def)) {
-          kill_[inst] |= variable_mapper[variable];
-          DEBUG_COUT << "---->kills " << variable->to_string() << std::endl;
-          DEBUG_COUT << "---->bit" << variable_mapper[variable] << std::endl;
-        }
+    while(!inst_list.empty()) {
+      auto inst = inst_list.front();
+      inst_list.pop();
+      std::set<L3::Variable> in, out;
+      for(auto suc : inst->GetSuccessors()) {
+        out.emplace(results[suc.lock().get()]->ins);
       }
-      for(auto use : inst->get_uses()) {
-        if(auto variable = dynamic_cast<Variable*>(use)) {
-          DEBUG_COUT << "---->gens " << variable->to_string() << std::endl;
-          gen_[inst] |= variable_mapper[variable];
-          DEBUG_COUT << "---->bit" << variable_mapper[variable] << std::endl;
+      std::set_difference(out.begin(), out.end(), 
+          results[inst]->kills.begin(), results[inst]->kills.end(), in.begin());
+      std::merge(results[inst]->gens.begin(), results[inst]->gens.end(),
+          in.begin(), in.end(), in.begin());
+      if(in != results[inst]->ins || out != results[inst]->outs) {
+        for(auto pred : inst->GetPredecessors()) {
+          inst_list.push(pred.lock().get());
         }
       }
     }
   }
 
-  void LivenessAnalysis::GenerateInAndOut() {
-    std::queue<Instruction*> work_list;
-    auto local_size = f_->get_locals().size();
-    DEBUG_COUT << "local size: " << local_size << std::endl;
-    for(auto inst : f_->get_instructions()) {
-      work_list.push(inst);
-      in_[inst] = bitset(local_size, 0);
-      out_[inst] = bitset(local_size, 0);
+
+  void ControlFlowGenerator::GenerateSuccessors() {
+    for(auto inst : function_->instructions) {
+      inst->accept(this);
     }
-    while(!work_list.empty()) {
-      auto in = bitset(local_size, 0);
-      auto out = bitset(local_size, 0);
-      auto inst = work_list.front();
-      work_list.pop();
-      auto successors = analyze_->GetSuccessors(inst);
-      for(auto successor : successors) {
-        out |= in_[successor];
-      }
-      in = gen_[inst] | (out - kill_[inst]);
-      if(in != in_[inst] or out != out_[inst]) {
-        auto predecessors = analyze_->GetPredecessors(inst);
-        for(auto predecessor : predecessors) {
-          work_list.push(predecessor);
-        }
-        in_[inst] = in;
-        out_[inst] = out;
-      }
-    }
-  }
-  std::set<Variable*> LivenessAnalysis::GetInSet(Instruction* inst) {
-    auto in_bits = in_.at(inst);
-    std::set<Variable*> in_set;
-    for(auto [variable, bit] : variable_mapper) {
-      if((in_bits & bit).any()) {
-        in_set.insert(variable);
-      }
-    }
-    return in_set;
   }
 
-  std::set<Variable*> LivenessAnalysis::GetOutSet(Instruction* inst) {
-    auto out_bits = out_.at(inst);
-    std::set<Variable*> out_set;
-    for(auto [variable, bit] : variable_mapper) {
-      if((out_bits & bit).any()) {
-        out_set.insert(variable);
+  void ControlFlowGenerator::GeneratePredecessors() {
+    for(auto inst : function_->instructions) {
+      auto suc_s = inst->GetSuccessors();
+      for(auto suc : suc_s) {
+        suc.lock()->InsertPredecessor(inst);
       }
     }
-    return out_set;
   }
+
+  void ControlFlowGenerator::visit(L3::Item* item) {}
+  void ControlFlowGenerator::visit(L3::Number* item) {}
+  void ControlFlowGenerator::visit(L3::FunctionName* item) {}
+  void ControlFlowGenerator::visit(L3::Label* item) {}
+  void ControlFlowGenerator::visit(L3::Variable* item) {}
+  void ControlFlowGenerator::visit(L3::Operator* item) {}
+
+  void ControlFlowGenerator::visit(L3::Instruction* inst) {
+    inst->accept(this);
+  }
+
+  void ControlFlowGenerator::visit(L3::CallInst* inst) {
+    if(i >= N) {
+      return;
+    }
+    if(inst->GetCalleeName() != "tensor-error") {
+      inst->InsertSuccessor(function_->instructions[++i]);
+    }
+  }
+
+  void ControlFlowGenerator::visit(L3::AssignInst* inst) {
+    if(i >= N) {
+      return;
+    }
+    inst->InsertSuccessor(function_->instructions[++i]);
+  }
+
+  void ControlFlowGenerator::visit(L3::BinaryOperator* inst) {
+    if(i >= N) {
+      return;
+    }
+    inst->InsertSuccessor(function_->instructions[++i]);
+  }
+
+  void ControlFlowGenerator::visit(L3::LoadInst* inst) {
+    if(i >= N) {
+      return;
+    }
+    inst->InsertSuccessor(function_->instructions[++i]);
+  }
+
+  void ControlFlowGenerator::visit(L3::StoreInst* inst) {
+    if(i >= N) {
+      return;
+    }
+    inst->InsertSuccessor(function_->instructions[++i]);
+  }
+
+  void ControlFlowGenerator::visit(L3::ReturnInst* inst) {
+    return;
+  }
+
+  void ControlFlowGenerator::visit(L3::BranchInst* inst) {
+    if(i >= N) {
+      return;
+    }
+    auto inst_s = function_->instructions;
+    for(auto inst_iter : inst_s) {
+      if(auto label = std::dynamic_pointer_cast<L3::LabelInst>(inst_iter)) {
+        if(label->GetLabelName() == inst->GetLabelName()) {
+          inst->InsertSuccessor(label);
+          break;
+        }
+      }
+    }
+    // check if mark is nullptr
+    if(!inst->GetUses().empty()) {
+      inst->InsertSuccessor(function_->instructions[++i]);
+    }
+  }
+
+  void ControlFlowGenerator::visit(L3::LabelInst* inst) {
+    inst->InsertSuccessor(function_->instructions[++i]);
+  }
+
 }
-
