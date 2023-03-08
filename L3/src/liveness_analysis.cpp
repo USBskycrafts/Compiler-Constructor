@@ -3,7 +3,7 @@
 #include <queue>
 
 namespace LivenessAnalysis {
-  std::map<L3::Instruction*, AnalysisResult*> results;
+  
 
   void SetControlFlow(L3::Function* function) {
     auto cfg = new ControlFlowGenerator(function);
@@ -11,7 +11,13 @@ namespace LivenessAnalysis {
     cfg->GeneratePredecessors();
   }
 
-  AnalysisResult* GenerateInAndOut(L3::Function* function) {
+  std::map<L3::Instruction*, AnalysisResult*> GenerateInAndOut(L3::Function* function) {
+    std::map<L3::Instruction*, AnalysisResult*> results;
+    static std::map<L3::Function*, std::map<L3::Instruction*, AnalysisResult*>> recorder;
+    if(recorder.count(function)) {
+      return recorder[function];
+    }
+    SetControlFlow(function);
     std::queue<L3::Instruction*> inst_list;
     for(auto inst : function->instructions) {
       auto result =  new AnalysisResult;
@@ -37,6 +43,8 @@ namespace LivenessAnalysis {
         }
       }
     }
+    recorder[function] = results;
+    return results;
   }
 
 

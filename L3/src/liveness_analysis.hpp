@@ -38,7 +38,5 @@ namespace LivenessAnalysis {
       const unsigned N ;
   };
 
-  void SetControlFlow(L3::Function* function);
-
-  AnalysisResult* GenerateInAndOut(L3::Function* function);
+  std::map<L3::Instruction*, AnalysisResult*> GenerateInAndOut(L3::Function* function);
 }
