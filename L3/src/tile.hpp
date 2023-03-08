@@ -21,8 +21,15 @@ namespace Tiling {
     public:
       Tree(Node* root) : root_(root) {}
       std::vector<Node*> GetLeaves();
-      void SetGeneratedCode(Node* node, std::string code) { codes_[node].emplace_back(code); }
+      void SetGeneratedCode(Node* node, std::vector<std::string> code) { codes_[node].emplace_back(code); }
       std::vector<std::string> GetRootCode() { return codes_[root_.get()]; }
+      std::vector<std::string> GetNodeCode(Node* node) {
+        try {
+          return codes_.at(node);
+        } catch(...) {
+          return {};
+        }
+      }
       Node* GetRoot() { return root_.get(); }
     private:
       std::map<Node*,  std::vector<std::string>> codes_;
@@ -38,10 +45,16 @@ namespace Tiling {
   };
 
   class Tile {
-
+    public:
+      virtual std::vector<Node*> Matches(Node* node) = 0;
+      virtual std::vector<std::string> GenerateCode(Node* node) = 0;
   };
 
   void GenerateContext(L3::Function* function);
 
   void MergingTree(Context* context);
+
+  void MatchesTile(Tree* tree);
+
+  void MatchesTile(Context* context);
 }

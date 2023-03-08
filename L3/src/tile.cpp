@@ -6,6 +6,7 @@
 
 namespace Tiling {
   std::map<L3::Function*, std::vector<Context*>> contexts;
+  std::map<std::string, Tile*> tile_mapper;
 
   void GenerateContext(L3::Function* function) {
     auto context = new Context;
@@ -142,6 +143,41 @@ namespace Tiling {
       for(auto child : node->GetChildren()) {
         nodes.push(child);
       }
+    }
+  }
+
+  void MatchesTile(Node* root, Tree* tree) {
+    if(root == nullptr) {
+      return;
+    }
+    for(auto child : root->GetChildren()) {
+      MatchesTile(child, tree);
+    }
+    for(auto [name, tile] : tile_mapper) {
+      auto leaves = tile->Matches(root);
+      if(leaves.empty()) {
+        continue;
+      }
+      std::vector<std::string> codes;
+      for(auto leave : leaves) {
+        auto code = tree->GetNodeCode(leave);
+        codes.emplace_back(code);
+      }
+      auto cur_code = tree->GetNodeCode(root);
+      if(codes.size() + tile->GenerateCode(root).size() < cur_code.size()) {
+        tree->SetGeneratedCode(root, tile->GenerateCode(root));
+      }
+    }
+  }
+
+  void MatchesTile(Tree* tree) {
+    MatchesTile(tree->GetRoot(), tree);
+  }
+
+  void MatchesTile(Context* context) {
+    for(auto tree : context->trees) {
+      MatchesTile(tree);
+      context->generated_codes[tree] = tree->GetRootCode();
     }
   }
 }
