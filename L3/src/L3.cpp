@@ -1,99 +1,206 @@
 #include "L3.hpp"
-#include "visitor.hpp"
+
+#include <vector>
+#include <sstream>
+#include "utils.hpp"
 
 namespace L3 {
-
-  void Item::accept(Visitor* visitor) {
-      visitor->visit(this);
+  Label::Label(std::string name) {
+    this->name = name;
+    this->type = ItemType::kLabel;
   }
 
-  void Instruction::accept(Visitor* visitor) {
-      visitor->visit(this);
+  FunctionName::FunctionName(std::string name) {
+    this->name = name;
+    this->type = ItemType::kFunctionName;
   }
 
-  std::vector<Variable> AssignInst::GetDefs() {
-    return {*dst_};
+  Operator::Operator(std::string name) {
+    this->name = name;
+    this->type = ItemType::kOperator;
   }
 
-  std::vector<Variable> AssignInst::GetUses() {
-    if(auto src = std::dynamic_pointer_cast<Variable>(src_)) {
-      return {*src};
+  Variable::Variable(std::string name) {
+    this->name = name;
+    this->type = ItemType::kVariable;
+  }
+
+  Number::Number(std::string name) {
+    this->name = name;
+    this->type = ItemType::kNumber;
+  }
+
+  std::vector<Variable*> AssignInst::GetDefs() {
+    return {lhs};
+  }
+
+  std::vector<Variable*> AssignInst::GetUses() {
+    if(rhs->type == ItemType::kVariable) {
+      return {(Variable*)rhs};
     } else {
       return {};
     }
   }
 
-  std::vector<Variable> BinaryOperator::GetDefs() {
-    return {*dst_};
+  std::string AssignInst::ToString() {
+    std::stringstream code;
+    code << INDENT(1) << lhs->name << " <- " << rhs->name << std::endl;
+    return code.str();
   }
 
-  std::vector<Variable> BinaryOperator::GetUses() {
-    std::vector<Variable> uses;
-    if(auto operand1 = std::dynamic_pointer_cast<Variable>(operand1_)) {
-      uses.push_back(*operand1);
+  BinaryOperator::BinaryOperator(Variable* lhs, Item* t1, Operator* op, Item* t2) {
+    this->lhs = lhs;
+    rhs = std::make_tuple(t1, op, t2);
+    type = "BinaryOperator";
+  }
+
+  std::vector<Variable*> BinaryOperator::GetDefs() {
+    return {lhs};
+  }
+
+  std::vector<Variable*> BinaryOperator::GetUses() {
+    auto t1 = std::get<0>(rhs);
+    auto t2 = std::get<2>(rhs);
+    std::vector<Variable*> uses;
+    if(t1->type == ItemType::kVariable) {
+      uses.emplace_back((Variable*)t1);
     }
-    if(auto operand2 = std::dynamic_pointer_cast<Variable>(operand2_)) {
-      uses.push_back(*operand2);
+    if(t2->type == ItemType::kVariable) {
+      uses.emplace_back((Variable*)t2);
     }
     return uses;
   }
 
-  std::vector<Variable> LoadInst::GetDefs() {
-    return {*dst_};
+  std::string BinaryOperator::ToString() {
+    std::stringstream code;
+    code << INDENT(1) << lhs->name << " <- "
+    << std::get<0>(rhs)->name << " " << std::get<1>(rhs)->name << " "
+    << std::get<2>(rhs)->name << std::endl;
+    return code.str();
   }
 
-  std::vector<Variable> LoadInst::GetUses() {
-    return {*src_};
-  }
-
-  std::vector<Variable> StoreInst::GetDefs() {
-    return {};
-  }
-  
-  std::vector<Variable> StoreInst::GetUses() {
-    std::vector<Variable> uses;
-    if(auto src = std::dynamic_pointer_cast<Variable>(src_)) {
-      uses.push_back(*src);
-    }
-    uses.push_back(*dst_);
-    return uses;
-  }
-
-  std::vector<Variable> ReturnInst::GetDefs() {
+  std::vector<Variable*> ReturnInst::GetDefs() {
     return {};
   }
 
-  std::vector<Variable> ReturnInst::GetUses() {
-    if(auto ret = std::dynamic_pointer_cast<Variable>(ret_)) {
-      return {*ret};
+  std::vector<Variable*> ReturnInst::GetUses() {
+    if(ret_val && ret_val->type == ItemType::kVariable) {
+      return {(Variable*)ret_val};
     } else {
       return {};
     }
   }
 
-  std::vector<Variable> BranchInst::GetDefs() {
+  std::string ReturnInst::ToString() {
+    std::stringstream code;
+    code << INDENT(1) << "return";
+    if(ret_val) {
+      code << " " << ret_val->name;
+    }
+    code << std::endl;
+    return code.str();
+  }
+
+  std::vector<Variable*> LabelInst::GetDefs() {
     return {};
   }
 
-  std::vector<Variable> BranchInst::GetUses() {
-    if(auto mark = std::dynamic_pointer_cast<Variable>(mark_)) {
-      return {*mark};
+  std::vector<Variable*> LabelInst::GetUses() {
+    return {};
+  }
+
+  std::string LabelInst::ToString() {
+    std::stringstream code;
+    code << INDENT(1) << label->name << std::endl;
+    return code.str();
+  }
+
+  std::vector<Variable*> BranchInst::GetDefs() {
+    return {};
+  }
+
+  std::vector<Variable*> BranchInst::GetUses() {
+    if(t && t->type == ItemType::kVariable) {
+      return {(Variable*)t};
     } else {
       return {};
     }
   }
 
-  std::vector<Variable> CallInst::GetDefs() {
-    return {*ret_};
+  std::string BranchInst::ToString() {
+    std::stringstream code;
+    code << INDENT(1) << "br ";
+    if(t != nullptr) {
+      code << t->name << " ";
+    }
+    code << label->name << std::endl;
+    return code.str();
   }
 
-  std::vector<Variable> CallInst::GetUses() {
-    std::vector<Variable> uses;
-    for(auto arg : args_) {
-      if(auto var = std::dynamic_pointer_cast<Variable>(arg)) {
-        uses.push_back(*var);
+  std::vector<Variable*> LoadInst::GetDefs() {
+    return {lhs};
+  }
+
+  std::vector<Variable*> LoadInst::GetUses() {
+    return {rhs};
+  }
+
+  std::string LoadInst::ToString() {
+    std::stringstream code;
+    code << INDENT(1) << lhs->name << " <- load " << rhs->name << std::endl;
+    return code.str();
+  }
+
+  std::vector<Variable*> StoreInst::GetDefs() {
+    return {lhs};
+  }
+
+  std::vector<Variable*> StoreInst::GetUses() {
+    if(rhs->type == ItemType::kVariable) {
+      return {(Variable*)rhs, lhs};
+    } else {
+      return {lhs};
+    }
+  }
+
+  std::string StoreInst::ToString() {
+    std::stringstream code;
+    code << INDENT(1) << "store " << lhs->name << " <- " << rhs->name << std::endl;
+    return code.str();
+  }
+
+  std::vector<Variable*> CallInst::GetDefs() {
+    if(lhs != nullptr) {
+      return {(Variable*)lhs};
+    } else {
+      return {};
+    }
+  }
+
+  std::vector<Variable*> CallInst::GetUses() {
+    std::vector<Variable*> uses;
+    for(auto arg : args) {
+      if(arg->type == ItemType::kVariable) {
+        uses.emplace_back((Variable*)arg);
       }
     }
+    if(callee->type == ItemType::kVariable) {
+      uses.push_back((Variable*)callee);
+    }
     return uses;
+  }
+
+  std::string CallInst::ToString() {
+    std::stringstream code;
+    code << INDENT(1);
+    if(lhs != nullptr) {
+      code << lhs->name << " <- ";
+    }
+    code << "call " << callee->name << "(";
+    for(auto i = args.begin(); i != args.end(); ++i) {
+      code << (i == args.begin() ? "" : ", ") << (*i)->name;
+    }
+    code << ")" << std::endl;
+    return code.str();
   }
 }
