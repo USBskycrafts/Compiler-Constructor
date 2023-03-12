@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <algorithm>
+#include <sstream>
 #include <queue>
 #include "liveness-analysis.hpp"
 #include "utils.hpp"
@@ -10,20 +11,39 @@ namespace Tiling {
 
   LivenessAnalysis::AnalysisResult result;
 
+  void PrintTree(Tree* tree) {
+    DEBUG_COUT << "{\n";
+    std::queue<Node*> nodes;
+    nodes.push(tree->root);
+    while(!nodes.empty()) {
+      auto node = nodes.front();
+      nodes.pop();
+      log_open && std::cerr << "parent: " << node->code << " ";
+      int counter = 0;
+      for(auto child : node->children) {
+        log_open && std::cerr << "child " << std::to_string(counter++) << ": " << child->code << " ";
+        nodes.push(child);
+      }
+      log_open && std::cerr << "\n";
+    }
+    log_open && std::cerr << "}\n";
+  }
+
   std::vector<Context> GenerateContext(L3::Function* function) {
     std::vector<Context> contexts;
     result = LivenessAnalysis::Analyze(function);
     auto context = Context();
     for(auto inst : function->instructions) {
+      context.instructions.emplace_back(inst);
       if(inst->type == "CallInst" || inst->type == "LabelInst" 
           || inst->type == "BranchInst" || inst->type == "ReturnInst") {
         contexts.push_back(context);
         context = Context();
       }
-      context.instructions.emplace_back(inst);
-      if(inst->type == "CallInst" || inst->type == "LabelInst") {
-        context = Context();
-      }
+#ifdef DEBUG
+      DEBUG_COUT << "solving: " << inst->ToString();
+#endif
+      
     }
     auto iter = std::remove_if(contexts.begin(), contexts.end(), 
         [&](Context context){ return context.instructions.empty(); });
@@ -42,6 +62,9 @@ namespace Tiling {
 
   Tree* GenerateTree(L3::Instruction* inst) {
     TreeGenerator generator;
+#ifdef DEBUG
+    DEBUG_COUT << "generate tree of" << inst->ToString();
+#endif
     generator.visit(inst);
     return generator.tree;
   }
@@ -65,6 +88,12 @@ namespace Tiling {
   }
 
   std::vector<Tree*> MergingTree(std::vector<Tree*> trees) {
+#ifdef DEBUG
+    DEBUG_COUT << "before merging\n";
+    for(auto tree : trees) {
+      PrintTree(tree);
+    }
+#endif
     for(auto i = trees.begin(); i != trees.end(); ++i) {
       for(auto j = i + 1; j != trees.end(); ++j) {
         if(*i == nullptr || *j == nullptr) {
@@ -81,12 +110,18 @@ namespace Tiling {
           }
           continue;
 success:
+#ifdef DEBUG
+          DEBUG_COUT << "probably able to merge\n";
+#endif
           //check if v is dead
           for(auto n : (*j)->outs) {
             if(n->name == v->code) {
               throw "";
             }
           }
+#ifdef DEBUG
+          DEBUG_COUT << v->code << " is not dead\n";
+#endif
           //no other uses in [T2, T1)
           VariableSet var_set;
           for(auto k = i; k < j; ++k) {
@@ -97,6 +132,9 @@ success:
               throw "";
             }
           }
+#ifdef DEBUG
+          DEBUG_COUT << "no other uses in [T2, T1)\n";
+#endif
           //no defs of variables used by T2 in [T2, T1)
           var_set.clear();
           for(auto k = i; k < j; ++k) {
@@ -109,6 +147,9 @@ success:
               }
             }
           }
+#ifdef DEBUG
+          DEBUG_COUT << "no defs of variables used by T2 in [T2, T1)\n";
+#endif
           //no load or store
           for(auto k = i; k < j; ++k) {
             if((*k)->root->code == "store") {
@@ -121,10 +162,13 @@ success:
               }
             }
           }
+#ifdef DEBUG
+          DEBUG_COUT << "able to merge\n";
+#endif
           //then it's able to merge
           for(auto n : leaves) {
             if(v->code == n->code) {
-              n->children.push_back(v);
+              std::copy(v->children.begin(), v->children.end(), std::back_inserter(n->children));
               (*j)->defs.insert((*i)->defs.begin(), (*i)->defs.end());
               (*j)->uses.insert((*i)->uses.begin(), (*i)->uses.end());
               (*j)->ins.insert((*i)->ins.begin(), (*i)->ins.end());
@@ -139,6 +183,14 @@ success:
         }
       }
     }
+    trees.erase(std::remove_if(trees.begin(), trees.end(), 
+        [&](Tree* tree){ return tree == nullptr; }), trees.end());
+#ifdef DEBUG
+    DEBUG_COUT << "after merging\n";
+    for(auto tree : trees) {
+      PrintTree(tree);
+    }
+#endif
     return trees;
   }
 
@@ -183,7 +235,7 @@ success:
     op->children.push_back(r_node);
     tree = new Tree;
     tree->root = l_node;
-    auto defs = inst->GetDefs(), uses = inst->GetDefs();
+    auto defs = inst->GetDefs(), uses = inst->GetUses();
     std::copy(defs.begin(), defs.end(), std::inserter(tree->defs, tree->defs.begin()));
     std::copy(uses.begin(), uses.end(), std::inserter(tree->uses, tree->uses.begin()));
     std::copy(result.in_set[inst].begin(), result.in_set[inst].end(), std::inserter(tree->ins, tree->ins.begin()));
@@ -208,7 +260,7 @@ success:
     op_node->children.push_back(t2_node);
     tree = new Tree;
     tree->root = l_node;
-    auto defs = inst->GetDefs(), uses = inst->GetDefs();
+    auto defs = inst->GetDefs(), uses = inst->GetUses();
     std::copy(defs.begin(), defs.end(), std::inserter(tree->defs, tree->defs.begin()));
     std::copy(uses.begin(), uses.end(), std::inserter(tree->uses, tree->uses.begin()));
     std::copy(result.in_set[inst].begin(), result.in_set[inst].end(), std::inserter(tree->ins, tree->ins.begin()));
@@ -218,12 +270,14 @@ success:
   void TreeGenerator::visit(L3::ReturnInst* inst) {
     auto op_node = new Node;
     op_node->code = "return";
-    auto ret_node = new Node;
-    ret_node->code = inst->ret_val->name;
-    op_node->children.push_back(ret_node);
+    if(inst->ret_val) {
+      auto ret_node = new Node;
+      ret_node->code = inst->ret_val->name;
+      op_node->children.push_back(ret_node);
+    }
     tree = new Tree;
     tree->root = op_node;
-    auto defs = inst->GetDefs(), uses = inst->GetDefs();
+    auto defs = inst->GetDefs(), uses = inst->GetUses();
     std::copy(defs.begin(), defs.end(), std::inserter(tree->defs, tree->defs.begin()));
     std::copy(uses.begin(), uses.end(), std::inserter(tree->uses, tree->uses.begin()));
     std::copy(result.in_set[inst].begin(), result.in_set[inst].end(), std::inserter(tree->ins, tree->ins.begin()));
@@ -235,7 +289,7 @@ success:
     label_node->code = inst->label->name;
     tree = new Tree;
     tree->root = label_node;
-    auto defs = inst->GetDefs(), uses = inst->GetDefs();
+    auto defs = inst->GetDefs(), uses = inst->GetUses();
     std::copy(defs.begin(), defs.end(), std::inserter(tree->defs, tree->defs.begin()));
     std::copy(uses.begin(), uses.end(), std::inserter(tree->uses, tree->uses.begin()));
     std::copy(result.in_set[inst].begin(), result.in_set[inst].end(), std::inserter(tree->ins, tree->ins.begin()));
@@ -255,7 +309,7 @@ success:
     }
     tree = new Tree;
     tree->root = op_node;
-    auto defs = inst->GetDefs(), uses = inst->GetDefs();
+    auto defs = inst->GetDefs(), uses = inst->GetUses();
     std::copy(defs.begin(), defs.end(), std::inserter(tree->defs, tree->defs.begin()));
     std::copy(uses.begin(), uses.end(), std::inserter(tree->uses, tree->uses.begin()));
     std::copy(result.in_set[inst].begin(), result.in_set[inst].end(), std::inserter(tree->ins, tree->ins.begin()));
@@ -273,7 +327,7 @@ success:
     op_node->children.push_back(rhs_node);
     tree = new Tree;
     tree->root = lhs_node;
-    auto defs = inst->GetDefs(), uses = inst->GetDefs();
+    auto defs = inst->GetDefs(), uses = inst->GetUses();
     std::copy(defs.begin(), defs.end(), std::inserter(tree->defs, tree->defs.begin()));
     std::copy(uses.begin(), uses.end(), std::inserter(tree->uses, tree->uses.begin()));
     std::copy(result.in_set[inst].begin(), result.in_set[inst].end(), std::inserter(tree->ins, tree->ins.begin()));
@@ -291,7 +345,7 @@ success:
     op_node->children.push_back(rhs);
     tree = new Tree;
     tree->root = op_node;
-    auto defs = inst->GetDefs(), uses = inst->GetDefs();
+    auto defs = inst->GetDefs(), uses = inst->GetUses();
     std::copy(defs.begin(), defs.end(), std::inserter(tree->defs, tree->defs.begin()));
     std::copy(uses.begin(), uses.end(), std::inserter(tree->uses, tree->uses.begin()));
     std::copy(result.in_set[inst].begin(), result.in_set[inst].end(), std::inserter(tree->ins, tree->ins.begin()));
@@ -300,25 +354,29 @@ success:
 
   void TreeGenerator::visit(L3::CallInst* inst) {
     tree = new Tree;
+    Node* op_node;
     if(inst->lhs) {
       auto lhs_node = new Node;
       lhs_node->code = inst->lhs->name;
       tree->root = lhs_node;
+      op_node = new Node;
+      op_node->code = "call";
+      tree->root = lhs_node;
+      lhs_node->children.push_back(op_node);
     } else {
-      auto op_node = new Node;
+      op_node = new Node;
       op_node->code = "call";
       tree->root = op_node;
     }
-    auto root = tree->root;
     auto callee_node = new Node;
     callee_node->code = inst->callee->name;
-    root->children.push_back(callee_node);
+    op_node->children.push_back(callee_node);
     for(auto arg : inst->args) {
       auto arg_node = new Node;
       arg_node->code = arg->name;
-      root->children.push_back(arg_node);
+      callee_node->children.push_back(arg_node);
     }
-    auto defs = inst->GetDefs(), uses = inst->GetDefs();
+    auto defs = inst->GetDefs(), uses = inst->GetUses();
     std::copy(defs.begin(), defs.end(), std::inserter(tree->defs, tree->defs.begin()));
     std::copy(uses.begin(), uses.end(), std::inserter(tree->uses, tree->uses.begin()));
     std::copy(result.in_set[inst].begin(), result.in_set[inst].end(), std::inserter(tree->ins, tree->ins.begin()));
