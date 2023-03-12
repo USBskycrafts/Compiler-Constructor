@@ -86,7 +86,13 @@ int main(
     auto contexts = Tiling::GenerateContext(f);
     for(auto context : contexts) {
       auto trees = Tiling::GenerateTree(context);
-      trees = Tiling::MergingTree(trees);
+      while(true) {
+        auto trees_merged = Tiling::MergingTree(trees);
+        if(trees_merged.size() == trees.size()) {
+          break;
+        }
+        trees = trees_merged;
+      }
     }
   }
   

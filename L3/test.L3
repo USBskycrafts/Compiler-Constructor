@@ -1,5 +1,7 @@
 define @main(%self, %a, %b) {
-  %b <- call input()
-  %a <- %b
+  %v <- 0
+  %temp1 <- %a + %a
+  %temp2 <- %temp1 + %a
+  %temp3 <- %temp2 + %a
   return
 }

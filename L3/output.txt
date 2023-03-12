@@ -1,149 +1,465 @@
-DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%v <- 2
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%ans <- %x + %y
 DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
-DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%v <- 1 - %v
-DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%v <- 1 - %v
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	return %ans
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	return %ans
 DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
-DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%w <- %v
-DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%w <- %v
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	return %ans
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ans <- %x + %y
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ans <- %x + %y
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%ans <- %x + %y
+
+{%x, %y}
+
+{%ans}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	return %ans
+
+{%ans}
+
+{}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 138 3 times
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%ans <- %x + %y
 DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
-DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%w <- %w << 1
-DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%w <- %w << 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	return %ans
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	return %ans
 DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
-DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%w <- %w + 1
-DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%w <- %w + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	return %ans
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ans <- %x + %y
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ans <- %x + %y
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%ans <- %x + %y
+
+{%x, %y}
+
+{%ans}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	return %ans
+
+{%ans}
+
+{}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 138 6 times
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%ans <- %x + %y
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	return %ans
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %ans child 0: + 
+parent: + child 0: %x child 1: %y 
+parent: %x 
+parent: %y 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: return child 0: %ans 
+parent: %ans 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 127 %ans is dead
+DEBUG src/tiling.cpp : in function MergingTree, line 140 no other uses in [T2, T1)
+DEBUG src/tiling.cpp : in function MergingTree, line 155 no defs of variables used by T2 in [T2, T1)
+DEBUG src/tiling.cpp : in function MergingTree, line 170 able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: return child 0: %ans 
+parent: %ans child 0: + 
+parent: + child 0: %x child 1: %y 
+parent: %x 
+parent: %y 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: return child 0: %ans 
+parent: %ans child 0: + 
+parent: + child 0: %x child 1: %y 
+parent: %x 
+parent: %y 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: return child 0: %ans 
+parent: %ans child 0: + 
+parent: + child 0: %x child 1: %y 
+parent: %x 
+parent: %y 
+}
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%ans <- %x - %y
 DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
-DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	call print(%w)
-DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	call print(%w)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	return %ans
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	return %ans
 DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
-DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	return
-DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	return
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	return %ans
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ans <- %x - %y
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ans <- %x - %y
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%ans <- %x - %y
+
+{%x, %y}
+
+{%ans}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	return %ans
+
+{%ans}
+
+{}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 138 9 times
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%ans <- %x - %y
 DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	return
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	return %ans
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	return %ans
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	return %ans
 
 {}
  
 {}
 
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call print(%w)
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ans <- %x - %y
 
 {}
  
 {}
 
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%w <- %w + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ans <- %x - %y
 
 {}
  
 {}
 
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%w <- %w << 1
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%ans <- %x - %y
 
-{}
- 
-{}
+{%x, %y}
 
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%w <- %v
+{%ans}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	return %ans
 
-{}
- 
-{}
-
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%v <- 1 - %v
-
-{}
- 
-{}
-
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%v <- 2
-
-{}
- 
-{}
-
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%w <- %w + 1
-
-{}
- 
-{}
-
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%w <- %w << 1
-
-{}
- 
-{}
-
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%w <- %v
-
-{}
- 
-{}
-
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%v <- 1 - %v
-
-{}
- 
-{}
-
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%v <- 2
-
-{}
- 
-{}
-
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%v <- 2
-
-{}
-
-{%v}
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%v <- 1 - %v
-
-{%v}
-
-{%v}
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%w <- %v
-
-{%v}
-
-{%w}
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%w <- %w << 1
-
-{%w}
-
-{%w}
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%w <- %w + 1
-
-{%w}
-
-{%w}
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	call print(%w)
-
-{%w}
-
-{}
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	return
-
-{}
+{%ans}
 
 {}
 DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 138 12 times
-DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%v <- 2
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%ans <- %x - %y
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	return %ans
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %ans child 0: - 
+parent: - child 0: %x child 1: %y 
+parent: %x 
+parent: %y 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: return child 0: %ans 
+parent: %ans 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 127 %ans is dead
+DEBUG src/tiling.cpp : in function MergingTree, line 140 no other uses in [T2, T1)
+DEBUG src/tiling.cpp : in function MergingTree, line 155 no defs of variables used by T2 in [T2, T1)
+DEBUG src/tiling.cpp : in function MergingTree, line 170 able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: return child 0: %ans 
+parent: %ans child 0: - 
+parent: - child 0: %x child 1: %y 
+parent: %x 
+parent: %y 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: return child 0: %ans 
+parent: %ans child 0: - 
+parent: - child 0: %x child 1: %y 
+parent: %x 
+parent: %y 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: return child 0: %ans 
+parent: %ans child 0: - 
+parent: - child 0: %x child 1: %y 
+parent: %x 
+parent: %y 
+}
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%ans <- %x * %y
 DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
-DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%v <- 1 - %v
-DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%v <- 1 - %v
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	return %ans
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	return %ans
 DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
-DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%w <- %v
-DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%w <- %v
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	return %ans
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ans <- %x * %y
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ans <- %x * %y
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%ans <- %x * %y
+
+{%x, %y}
+
+{%ans}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	return %ans
+
+{%ans}
+
+{}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 138 15 times
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%ans <- %x * %y
 DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
-DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%w <- %w << 1
-DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%w <- %w << 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	return %ans
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	return %ans
 DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
-DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%w <- %w + 1
-DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%w <- %w + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	return %ans
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ans <- %x * %y
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ans <- %x * %y
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%ans <- %x * %y
+
+{%x, %y}
+
+{%ans}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	return %ans
+
+{%ans}
+
+{}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 138 18 times
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%ans <- %x * %y
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	return %ans
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %ans child 0: * 
+parent: * child 0: %x child 1: %y 
+parent: %x 
+parent: %y 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: return child 0: %ans 
+parent: %ans 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 127 %ans is dead
+DEBUG src/tiling.cpp : in function MergingTree, line 140 no other uses in [T2, T1)
+DEBUG src/tiling.cpp : in function MergingTree, line 155 no defs of variables used by T2 in [T2, T1)
+DEBUG src/tiling.cpp : in function MergingTree, line 170 able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: return child 0: %ans 
+parent: %ans child 0: * 
+parent: * child 0: %x child 1: %y 
+parent: %x 
+parent: %y 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: return child 0: %ans 
+parent: %ans child 0: * 
+parent: * child 0: %x child 1: %y 
+parent: %x 
+parent: %y 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: return child 0: %ans 
+parent: %ans child 0: * 
+parent: * child 0: %x child 1: %y 
+parent: %x 
+parent: %y 
+}
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%ops <- call allocate(7, 1)
 DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
-DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	call print(%w)
-DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	call print(%w)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%plus <- @plus
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%plus <- @plus
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%minus <- @minus
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%minus <- @minus
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%times <- @times
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%times <- @times
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	call @store(%ops, 0, %plus)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	call @store(%ops, 0, %plus)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	call @store(%ops, 1, %minus)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	call @store(%ops, 1, %minus)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	call @store(%ops, 2, %times)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	call @store(%ops, 2, %times)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%X <- 7
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%X <- 7
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%Y <- 2
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%Y <- 2
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%i <- 0
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%i <- 0
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	:L1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	:L1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%f <- call @load(%ops, %i)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%f <- call @load(%ops, %i)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%ans <- call %f(%ops, %X, %Y)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%ans <- call %f(%ops, %X, %Y)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%num <- %ans * 2
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%num <- %ans * 2
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%num <- %num + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%num <- %num + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	call print(%num)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	call print(%num)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%i <- %i + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%i <- %i + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%fin <- %i < 3
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%fin <- %i < 3
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	br %fin :L1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	br %fin :L1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%cGs <- call allocate(7, 1)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	:L1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%cGs <- call allocate(7, 1)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%i <- 0
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%i <- 0
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	:L2
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	:L2
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%f <- call @load(%ops, %i)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%f <- call @load(%ops, %i)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%cF <- call allocate(3, 1)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%cF <- call allocate(3, 1)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	call @store(%cF, 0, %f)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	call @store(%cF, 0, %f)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%cG <- call @curry(%cF)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%cG <- call @curry(%cF)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	call @store(%cGs, %i, %cG)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	call @store(%cGs, %i, %cG)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%i <- %i + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%i <- %i + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%fin <- %i < 3
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%fin <- %i < 3
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	br %fin :L2
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	br %fin :L2
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%i <- 0
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	:L2
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%i <- 0
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	:L3
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	:L3
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%cG <- call @load(%cGs, %i)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%cG <- call @load(%cGs, %i)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%g <- call @load(%cG, 0)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%g <- call @load(%cG, 0)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%cH <- call %g(%cG, %X)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%cH <- call %g(%cG, %X)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%h <- call @load(%cH, 0)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%h <- call @load(%cH, 0)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%ans <- call %h(%cH, %Y)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%ans <- call %h(%cH, %Y)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%num <- %ans * 2
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%num <- %ans * 2
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%num <- %num + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%num <- %num + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	call print(%num)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	call print(%num)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%i <- %i + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%i <- %i + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%fin <- %i < 3
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%fin <- %i < 3
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	br %fin :L3
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	br %fin :L3
 DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
 DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	return
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	:L3
 DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	return
 DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
 DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	return
@@ -152,198 +468,4128 @@ DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	return
  
 {}
 
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call print(%w)
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	br %fin :L3
 
 {}
  
 {}
 
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%w <- %w + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%fin <- %i < 3
 
 {}
  
 {}
 
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%w <- %w << 1
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- %i + 1
 
 {}
  
 {}
 
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%w <- %v
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call print(%num)
 
 {}
  
 {}
 
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%v <- 1 - %v
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%num <- %num + 1
 
 {}
  
 {}
 
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%v <- 2
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%num <- %ans * 2
 
 {}
  
 {}
 
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%w <- %w + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ans <- call %h(%cH, %Y)
 
 {}
  
 {}
 
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%w <- %w << 1
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%h <- call @load(%cH, 0)
 
 {}
  
 {}
 
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%w <- %v
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cH <- call %g(%cG, %X)
 
 {}
  
 {}
 
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%v <- 1 - %v
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%g <- call @load(%cG, 0)
 
 {}
  
 {}
 
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%v <- 2
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cG <- call @load(%cGs, %i)
 
 {}
  
 {}
 
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%v <- 2
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	:L3
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- 0
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	br %fin :L2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%fin <- %i < 3
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- %i + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cGs, %i, %cG)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cG <- call @curry(%cF)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cF, 0, %f)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cF <- call allocate(3, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%f <- call @load(%ops, %i)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	:L2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- 0
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cGs <- call allocate(7, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	br %fin :L1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%fin <- %i < 3
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- %i + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call print(%num)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%num <- %num + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%num <- %ans * 2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ans <- call %f(%ops, %X, %Y)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%f <- call @load(%ops, %i)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	:L1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- 0
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%Y <- 2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%X <- 7
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%ops, 2, %times)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%ops, 1, %minus)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%ops, 0, %plus)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%times <- @times
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%minus <- @minus
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%plus <- @plus
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ops <- call allocate(7, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%fin <- %i < 3
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- %i + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call print(%num)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%num <- %num + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%num <- %ans * 2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ans <- call %h(%cH, %Y)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%h <- call @load(%cH, 0)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cH <- call %g(%cG, %X)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%g <- call @load(%cG, 0)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cG <- call @load(%cGs, %i)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	:L3
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- 0
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	br %fin :L3
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	br %fin :L2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%fin <- %i < 3
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- %i + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cGs, %i, %cG)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cG <- call @curry(%cF)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cF, 0, %f)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cF <- call allocate(3, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%f <- call @load(%ops, %i)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	:L2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- 0
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	br %fin :L2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cGs <- call allocate(7, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	br %fin :L1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%fin <- %i < 3
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- %i + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call print(%num)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%num <- %num + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%num <- %ans * 2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ans <- call %f(%ops, %X, %Y)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%f <- call @load(%ops, %i)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	:L1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- 0
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	br %fin :L1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%Y <- 2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%X <- 7
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%ops, 2, %times)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%ops, 1, %minus)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%ops, 0, %plus)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%times <- @times
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%minus <- @minus
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%plus <- @plus
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ops <- call allocate(7, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%fin <- %i < 3
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%fin <- %i < 3
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- %i + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cGs, %i, %cG)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cG <- call @curry(%cF)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cF, 0, %f)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cF <- call allocate(3, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%f <- call @load(%ops, %i)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	:L2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%fin <- %i < 3
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- %i + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- %i + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call print(%num)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%num <- %num + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%num <- %ans * 2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ans <- call %h(%cH, %Y)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%h <- call @load(%cH, 0)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cH <- call %g(%cG, %X)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%g <- call @load(%cG, 0)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cG <- call @load(%cGs, %i)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	:L3
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%ops <- call allocate(7, 1)
 
 {}
 
-{%v}
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%v <- 1 - %v
+{%ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%plus <- @plus
 
-{%v}
+{%ops}
 
-{%v}
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%w <- %v
+{%ops, %plus}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%minus <- @minus
 
-{%v}
+{%ops, %plus}
 
-{%w}
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%w <- %w << 1
+{%minus, %ops, %plus}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%times <- @times
 
-{%w}
+{%minus, %ops, %plus}
 
-{%w}
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%w <- %w + 1
+{%minus, %ops, %plus, %times}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	call @store(%ops, 0, %plus)
 
-{%w}
+{%minus, %ops, %plus, %times}
 
-{%w}
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	call print(%w)
+{%minus, %ops, %times}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	call @store(%ops, 1, %minus)
 
-{%w}
+{%minus, %ops, %times}
 
-{}
+{%ops, %times}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	call @store(%ops, 2, %times)
+
+{%ops, %times}
+
+{%ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%X <- 7
+
+{%ops}
+
+{%X, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%Y <- 2
+
+{%X, %ops}
+
+{%X, %Y, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%i <- 0
+
+{%X, %Y, %ops}
+
+{%X, %Y, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	:L1
+
+{%X, %Y, %i, %ops}
+
+{%X, %Y, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%f <- call @load(%ops, %i)
+
+{%X, %Y, %i, %ops}
+
+{%X, %Y, %f, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%ans <- call %f(%ops, %X, %Y)
+
+{%X, %Y, %f, %i, %ops}
+
+{%X, %Y, %ans, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%num <- %ans * 2
+
+{%X, %Y, %ans, %i, %ops}
+
+{%X, %Y, %i, %num, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%num <- %num + 1
+
+{%X, %Y, %i, %num, %ops}
+
+{%X, %Y, %i, %num, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	call print(%num)
+
+{%X, %Y, %i, %num, %ops}
+
+{%X, %Y, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%i <- %i + 1
+
+{%X, %Y, %i, %ops}
+
+{%X, %Y, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%fin <- %i < 3
+
+{%X, %Y, %i, %ops}
+
+{%X, %Y, %fin, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	br %fin :L1
+
+{%X, %Y, %fin, %i, %ops}
+
+{%X, %Y, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%cGs <- call allocate(7, 1)
+
+{%X, %Y, %ops}
+
+{%X, %Y, %cGs, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%i <- 0
+
+{%X, %Y, %cGs, %ops}
+
+{%X, %Y, %cGs, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	:L2
+
+{%X, %Y, %cGs, %i, %ops}
+
+{%X, %Y, %cGs, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%f <- call @load(%ops, %i)
+
+{%X, %Y, %cGs, %i, %ops}
+
+{%X, %Y, %cGs, %f, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%cF <- call allocate(3, 1)
+
+{%X, %Y, %cGs, %f, %i, %ops}
+
+{%X, %Y, %cF, %cGs, %f, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	call @store(%cF, 0, %f)
+
+{%X, %Y, %cF, %cGs, %f, %i, %ops}
+
+{%X, %Y, %cF, %cGs, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%cG <- call @curry(%cF)
+
+{%X, %Y, %cF, %cGs, %i, %ops}
+
+{%X, %Y, %cG, %cGs, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	call @store(%cGs, %i, %cG)
+
+{%X, %Y, %cG, %cGs, %i, %ops}
+
+{%X, %Y, %cGs, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%i <- %i + 1
+
+{%X, %Y, %cGs, %i, %ops}
+
+{%X, %Y, %cGs, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%fin <- %i < 3
+
+{%X, %Y, %cGs, %i, %ops}
+
+{%X, %Y, %cGs, %fin, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	br %fin :L2
+
+{%X, %Y, %cGs, %fin, %i, %ops}
+
+{%X, %Y, %cGs, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%i <- 0
+
+{%X, %Y, %cGs}
+
+{%X, %Y, %cGs, %i}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	:L3
+
+{%X, %Y, %cGs, %i}
+
+{%X, %Y, %cGs, %i}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%cG <- call @load(%cGs, %i)
+
+{%X, %Y, %cGs, %i}
+
+{%X, %Y, %cG, %cGs, %i}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%g <- call @load(%cG, 0)
+
+{%X, %Y, %cG, %cGs, %i}
+
+{%X, %Y, %cG, %cGs, %g, %i}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%cH <- call %g(%cG, %X)
+
+{%X, %Y, %cG, %cGs, %g, %i}
+
+{%X, %Y, %cGs, %cH, %i}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%h <- call @load(%cH, 0)
+
+{%X, %Y, %cGs, %cH, %i}
+
+{%X, %Y, %cGs, %cH, %h, %i}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%ans <- call %h(%cH, %Y)
+
+{%X, %Y, %cGs, %cH, %h, %i}
+
+{%X, %Y, %ans, %cGs, %i}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%num <- %ans * 2
+
+{%X, %Y, %ans, %cGs, %i}
+
+{%X, %Y, %cGs, %i, %num}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%num <- %num + 1
+
+{%X, %Y, %cGs, %i, %num}
+
+{%X, %Y, %cGs, %i, %num}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	call print(%num)
+
+{%X, %Y, %cGs, %i, %num}
+
+{%X, %Y, %cGs, %i}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%i <- %i + 1
+
+{%X, %Y, %cGs, %i}
+
+{%X, %Y, %cGs, %i}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%fin <- %i < 3
+
+{%X, %Y, %cGs, %i}
+
+{%X, %Y, %cGs, %fin, %i}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	br %fin :L3
+
+{%X, %Y, %cGs, %fin, %i}
+
+{%X, %Y, %cGs, %i}
 DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	return
 
 {}
 
 {}
-DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 138 24 times
-DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%v <- 2
-DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%v <- 1 - %v
-DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%w <- %v
-DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%w <- %w << 1
-DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%w <- %w + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 138 128 times
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%ops <- call allocate(7, 1)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%plus <- @plus
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%plus <- @plus
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%minus <- @minus
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%minus <- @minus
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%times <- @times
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%times <- @times
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	call @store(%ops, 0, %plus)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	call @store(%ops, 0, %plus)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	call @store(%ops, 1, %minus)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	call @store(%ops, 1, %minus)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	call @store(%ops, 2, %times)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	call @store(%ops, 2, %times)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%X <- 7
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%X <- 7
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%Y <- 2
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%Y <- 2
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%i <- 0
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%i <- 0
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	:L1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	:L1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%f <- call @load(%ops, %i)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%f <- call @load(%ops, %i)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%ans <- call %f(%ops, %X, %Y)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%ans <- call %f(%ops, %X, %Y)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%num <- %ans * 2
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%num <- %ans * 2
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%num <- %num + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%num <- %num + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	call print(%num)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	call print(%num)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%i <- %i + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%i <- %i + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%fin <- %i < 3
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%fin <- %i < 3
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	br %fin :L1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	br %fin :L1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%cGs <- call allocate(7, 1)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	:L1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%cGs <- call allocate(7, 1)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%i <- 0
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%i <- 0
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	:L2
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	:L2
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%f <- call @load(%ops, %i)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%f <- call @load(%ops, %i)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%cF <- call allocate(3, 1)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%cF <- call allocate(3, 1)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	call @store(%cF, 0, %f)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	call @store(%cF, 0, %f)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%cG <- call @curry(%cF)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%cG <- call @curry(%cF)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	call @store(%cGs, %i, %cG)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	call @store(%cGs, %i, %cG)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%i <- %i + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%i <- %i + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%fin <- %i < 3
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%fin <- %i < 3
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	br %fin :L2
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	br %fin :L2
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%i <- 0
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	:L2
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%i <- 0
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	:L3
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	:L3
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%cG <- call @load(%cGs, %i)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%cG <- call @load(%cGs, %i)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%g <- call @load(%cG, 0)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%g <- call @load(%cG, 0)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%cH <- call %g(%cG, %X)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%cH <- call %g(%cG, %X)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%h <- call @load(%cH, 0)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%h <- call @load(%cH, 0)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%ans <- call %h(%cH, %Y)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%ans <- call %h(%cH, %Y)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%num <- %ans * 2
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%num <- %ans * 2
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%num <- %num + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%num <- %num + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	call print(%num)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	call print(%num)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%i <- %i + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%i <- %i + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%fin <- %i < 3
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%fin <- %i < 3
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	br %fin :L3
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	br %fin :L3
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	return
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	:L3
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	return
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	return
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	br %fin :L3
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%fin <- %i < 3
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- %i + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call print(%num)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%num <- %num + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%num <- %ans * 2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ans <- call %h(%cH, %Y)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%h <- call @load(%cH, 0)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cH <- call %g(%cG, %X)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%g <- call @load(%cG, 0)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cG <- call @load(%cGs, %i)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	:L3
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- 0
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	br %fin :L2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%fin <- %i < 3
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- %i + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cGs, %i, %cG)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cG <- call @curry(%cF)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cF, 0, %f)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cF <- call allocate(3, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%f <- call @load(%ops, %i)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	:L2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- 0
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cGs <- call allocate(7, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	br %fin :L1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%fin <- %i < 3
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- %i + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call print(%num)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%num <- %num + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%num <- %ans * 2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ans <- call %f(%ops, %X, %Y)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%f <- call @load(%ops, %i)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	:L1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- 0
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%Y <- 2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%X <- 7
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%ops, 2, %times)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%ops, 1, %minus)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%ops, 0, %plus)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%times <- @times
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%minus <- @minus
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%plus <- @plus
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ops <- call allocate(7, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%fin <- %i < 3
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- %i + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call print(%num)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%num <- %num + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%num <- %ans * 2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ans <- call %h(%cH, %Y)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%h <- call @load(%cH, 0)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cH <- call %g(%cG, %X)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%g <- call @load(%cG, 0)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cG <- call @load(%cGs, %i)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	:L3
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- 0
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	br %fin :L3
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	br %fin :L2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%fin <- %i < 3
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- %i + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cGs, %i, %cG)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cG <- call @curry(%cF)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cF, 0, %f)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cF <- call allocate(3, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%f <- call @load(%ops, %i)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	:L2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- 0
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	br %fin :L2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cGs <- call allocate(7, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	br %fin :L1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%fin <- %i < 3
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- %i + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call print(%num)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%num <- %num + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%num <- %ans * 2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ans <- call %f(%ops, %X, %Y)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%f <- call @load(%ops, %i)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	:L1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- 0
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	br %fin :L1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%Y <- 2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%X <- 7
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%ops, 2, %times)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%ops, 1, %minus)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%ops, 0, %plus)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%times <- @times
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%minus <- @minus
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%plus <- @plus
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ops <- call allocate(7, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%fin <- %i < 3
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%fin <- %i < 3
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- %i + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cGs, %i, %cG)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cG <- call @curry(%cF)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cF, 0, %f)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cF <- call allocate(3, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%f <- call @load(%ops, %i)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	:L2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%fin <- %i < 3
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- %i + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%i <- %i + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call print(%num)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%num <- %num + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%num <- %ans * 2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ans <- call %h(%cH, %Y)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%h <- call @load(%cH, 0)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cH <- call %g(%cG, %X)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%g <- call @load(%cG, 0)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cG <- call @load(%cGs, %i)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	:L3
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%ops <- call allocate(7, 1)
+
+{}
+
+{%ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%plus <- @plus
+
+{%ops}
+
+{%ops, %plus}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%minus <- @minus
+
+{%ops, %plus}
+
+{%minus, %ops, %plus}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%times <- @times
+
+{%minus, %ops, %plus}
+
+{%minus, %ops, %plus, %times}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	call @store(%ops, 0, %plus)
+
+{%minus, %ops, %plus, %times}
+
+{%minus, %ops, %times}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	call @store(%ops, 1, %minus)
+
+{%minus, %ops, %times}
+
+{%ops, %times}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	call @store(%ops, 2, %times)
+
+{%ops, %times}
+
+{%ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%X <- 7
+
+{%ops}
+
+{%X, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%Y <- 2
+
+{%X, %ops}
+
+{%X, %Y, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%i <- 0
+
+{%X, %Y, %ops}
+
+{%X, %Y, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	:L1
+
+{%X, %Y, %i, %ops}
+
+{%X, %Y, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%f <- call @load(%ops, %i)
+
+{%X, %Y, %i, %ops}
+
+{%X, %Y, %f, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%ans <- call %f(%ops, %X, %Y)
+
+{%X, %Y, %f, %i, %ops}
+
+{%X, %Y, %ans, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%num <- %ans * 2
+
+{%X, %Y, %ans, %i, %ops}
+
+{%X, %Y, %i, %num, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%num <- %num + 1
+
+{%X, %Y, %i, %num, %ops}
+
+{%X, %Y, %i, %num, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	call print(%num)
+
+{%X, %Y, %i, %num, %ops}
+
+{%X, %Y, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%i <- %i + 1
+
+{%X, %Y, %i, %ops}
+
+{%X, %Y, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%fin <- %i < 3
+
+{%X, %Y, %i, %ops}
+
+{%X, %Y, %fin, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	br %fin :L1
+
+{%X, %Y, %fin, %i, %ops}
+
+{%X, %Y, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%cGs <- call allocate(7, 1)
+
+{%X, %Y, %ops}
+
+{%X, %Y, %cGs, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%i <- 0
+
+{%X, %Y, %cGs, %ops}
+
+{%X, %Y, %cGs, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	:L2
+
+{%X, %Y, %cGs, %i, %ops}
+
+{%X, %Y, %cGs, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%f <- call @load(%ops, %i)
+
+{%X, %Y, %cGs, %i, %ops}
+
+{%X, %Y, %cGs, %f, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%cF <- call allocate(3, 1)
+
+{%X, %Y, %cGs, %f, %i, %ops}
+
+{%X, %Y, %cF, %cGs, %f, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	call @store(%cF, 0, %f)
+
+{%X, %Y, %cF, %cGs, %f, %i, %ops}
+
+{%X, %Y, %cF, %cGs, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%cG <- call @curry(%cF)
+
+{%X, %Y, %cF, %cGs, %i, %ops}
+
+{%X, %Y, %cG, %cGs, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	call @store(%cGs, %i, %cG)
+
+{%X, %Y, %cG, %cGs, %i, %ops}
+
+{%X, %Y, %cGs, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%i <- %i + 1
+
+{%X, %Y, %cGs, %i, %ops}
+
+{%X, %Y, %cGs, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%fin <- %i < 3
+
+{%X, %Y, %cGs, %i, %ops}
+
+{%X, %Y, %cGs, %fin, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	br %fin :L2
+
+{%X, %Y, %cGs, %fin, %i, %ops}
+
+{%X, %Y, %cGs, %i, %ops}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%i <- 0
+
+{%X, %Y, %cGs}
+
+{%X, %Y, %cGs, %i}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	:L3
+
+{%X, %Y, %cGs, %i}
+
+{%X, %Y, %cGs, %i}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%cG <- call @load(%cGs, %i)
+
+{%X, %Y, %cGs, %i}
+
+{%X, %Y, %cG, %cGs, %i}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%g <- call @load(%cG, 0)
+
+{%X, %Y, %cG, %cGs, %i}
+
+{%X, %Y, %cG, %cGs, %g, %i}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%cH <- call %g(%cG, %X)
+
+{%X, %Y, %cG, %cGs, %g, %i}
+
+{%X, %Y, %cGs, %cH, %i}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%h <- call @load(%cH, 0)
+
+{%X, %Y, %cGs, %cH, %i}
+
+{%X, %Y, %cGs, %cH, %h, %i}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%ans <- call %h(%cH, %Y)
+
+{%X, %Y, %cGs, %cH, %h, %i}
+
+{%X, %Y, %ans, %cGs, %i}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%num <- %ans * 2
+
+{%X, %Y, %ans, %cGs, %i}
+
+{%X, %Y, %cGs, %i, %num}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%num <- %num + 1
+
+{%X, %Y, %cGs, %i, %num}
+
+{%X, %Y, %cGs, %i, %num}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	call print(%num)
+
+{%X, %Y, %cGs, %i, %num}
+
+{%X, %Y, %cGs, %i}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%i <- %i + 1
+
+{%X, %Y, %cGs, %i}
+
+{%X, %Y, %cGs, %i}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%fin <- %i < 3
+
+{%X, %Y, %cGs, %i}
+
+{%X, %Y, %cGs, %fin, %i}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	br %fin :L3
+
+{%X, %Y, %cGs, %fin, %i}
+
+{%X, %Y, %cGs, %i}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	return
+
+{}
+
+{}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 138 238 times
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%ops <- call allocate(7, 1)
 DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
 DEBUG src/tiling.cpp : in function PrintTree, line 15 {
-parent: %v child 0: <- 
+parent: %ops child 0: call 
+parent: call child 0: allocate 
+parent: allocate child 0: 7 child 1: 1 
+parent: 7 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %ops child 0: call 
+parent: call child 0: allocate 
+parent: allocate child 0: 7 child 1: 1 
+parent: 7 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%plus <- @plus
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%minus <- @minus
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%times <- @times
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %plus child 0: <- 
+parent: <- child 0: @plus 
+parent: @plus 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %minus child 0: <- 
+parent: <- child 0: @minus 
+parent: @minus 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %times child 0: <- 
+parent: <- child 0: @times 
+parent: @times 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %plus child 0: <- 
+parent: <- child 0: @plus 
+parent: @plus 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %minus child 0: <- 
+parent: <- child 0: @minus 
+parent: @minus 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %times child 0: <- 
+parent: <- child 0: @times 
+parent: @times 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	call @store(%ops, 0, %plus)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: call child 0: @store 
+parent: @store child 0: %ops child 1: 0 child 2: %plus 
+parent: %ops 
+parent: 0 
+parent: %plus 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: call child 0: @store 
+parent: @store child 0: %ops child 1: 0 child 2: %plus 
+parent: %ops 
+parent: 0 
+parent: %plus 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	call @store(%ops, 1, %minus)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: call child 0: @store 
+parent: @store child 0: %ops child 1: 1 child 2: %minus 
+parent: %ops 
+parent: 1 
+parent: %minus 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: call child 0: @store 
+parent: @store child 0: %ops child 1: 1 child 2: %minus 
+parent: %ops 
+parent: 1 
+parent: %minus 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	call @store(%ops, 2, %times)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: call child 0: @store 
+parent: @store child 0: %ops child 1: 2 child 2: %times 
+parent: %ops 
+parent: 2 
+parent: %times 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: call child 0: @store 
+parent: @store child 0: %ops child 1: 2 child 2: %times 
+parent: %ops 
+parent: 2 
+parent: %times 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%X <- 7
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%Y <- 2
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%i <- 0
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %X child 0: <- 
+parent: <- child 0: 7 
+parent: 7 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %Y child 0: <- 
 parent: <- child 0: 2 
 parent: 2 
 }
 DEBUG src/tiling.cpp : in function PrintTree, line 15 {
-parent: %v child 0: - 
-parent: - child 0: 1 child 1: %v 
-parent: 1 
-parent: %v 
+parent: %i child 0: <- 
+parent: <- child 0: 0 
+parent: 0 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %X child 0: <- 
+parent: <- child 0: 7 
+parent: 7 
 }
 DEBUG src/tiling.cpp : in function PrintTree, line 15 {
-parent: %w child 0: <- 
-parent: <- child 0: %v 
-parent: %v 
-}
-DEBUG src/tiling.cpp : in function PrintTree, line 15 {
-parent: %w child 0: << 
-parent: << child 0: %w child 1: 1 
-parent: %w 
-parent: 1 
-}
-DEBUG src/tiling.cpp : in function PrintTree, line 15 {
-parent: %w child 0: + 
-parent: + child 0: %w child 1: 1 
-parent: %w 
-parent: 1 
-}
-DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
-DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
-DEBUG src/tiling.cpp : in function MergingTree, line 127 %v is dead
-DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
-DEBUG src/tiling.cpp : in function MergingTree, line 127 %v is dead
-DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
-DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
-DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
-DEBUG src/tiling.cpp : in function MergingTree, line 193 after merging
-DEBUG src/tiling.cpp : in function PrintTree, line 15 {
-parent: %v child 0: <- 
+parent: %Y child 0: <- 
 parent: <- child 0: 2 
 parent: 2 
 }
 DEBUG src/tiling.cpp : in function PrintTree, line 15 {
-parent: %v child 0: - 
-parent: - child 0: 1 child 1: %v 
-parent: 1 
-parent: %v 
+parent: %i child 0: <- 
+parent: <- child 0: 0 
+parent: 0 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	:L1
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: :L1 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: :L1 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%f <- call @load(%ops, %i)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %f child 0: call 
+parent: call child 0: @load 
+parent: @load child 0: %ops child 1: %i 
+parent: %ops 
+parent: %i 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %f child 0: call 
+parent: call child 0: @load 
+parent: @load child 0: %ops child 1: %i 
+parent: %ops 
+parent: %i 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%ans <- call %f(%ops, %X, %Y)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %ans child 0: call 
+parent: call child 0: %f 
+parent: %f child 0: %ops child 1: %X child 2: %Y 
+parent: %ops 
+parent: %X 
+parent: %Y 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %ans child 0: call 
+parent: call child 0: %f 
+parent: %f child 0: %ops child 1: %X child 2: %Y 
+parent: %ops 
+parent: %X 
+parent: %Y 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%num <- %ans * 2
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%num <- %num + 1
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %num child 0: * 
+parent: * child 0: %ans child 1: 2 
+parent: %ans 
+parent: 2 
 }
 DEBUG src/tiling.cpp : in function PrintTree, line 15 {
-parent: %w child 0: <- 
-parent: <- child 0: %v 
-parent: %v 
-}
-DEBUG src/tiling.cpp : in function PrintTree, line 15 {
-parent: %w child 0: << 
-parent: << child 0: %w child 1: 1 
-parent: %w 
+parent: %num child 0: + 
+parent: + child 0: %num child 1: 1 
+parent: %num 
 parent: 1 
 }
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
 DEBUG src/tiling.cpp : in function PrintTree, line 15 {
-parent: %w child 0: + 
-parent: + child 0: %w child 1: 1 
-parent: %w 
+parent: %num child 0: * 
+parent: * child 0: %ans child 1: 2 
+parent: %ans 
+parent: 2 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %num child 0: + 
+parent: + child 0: %num child 1: 1 
+parent: %num 
 parent: 1 
 }
-DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	call print(%w)
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	call print(%num)
 DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
 DEBUG src/tiling.cpp : in function PrintTree, line 15 {
 parent: call child 0: print 
-parent: print child 0: %w 
-parent: %w 
+parent: print child 0: %num 
+parent: %num 
 }
-DEBUG src/tiling.cpp : in function MergingTree, line 193 after merging
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
 DEBUG src/tiling.cpp : in function PrintTree, line 15 {
 parent: call child 0: print 
-parent: print child 0: %w 
-parent: %w 
+parent: print child 0: %num 
+parent: %num 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%i <- %i + 1
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%fin <- %i < 3
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	br %fin :L1
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %i child 0: + 
+parent: + child 0: %i child 1: 1 
+parent: %i 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %fin child 0: < 
+parent: < child 0: %i child 1: 3 
+parent: %i 
+parent: 3 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: br child 0: :L1 child 1: %fin 
+parent: :L1 
+parent: %fin 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 127 %fin is dead
+DEBUG src/tiling.cpp : in function MergingTree, line 140 no other uses in [T2, T1)
+DEBUG src/tiling.cpp : in function MergingTree, line 155 no defs of variables used by T2 in [T2, T1)
+DEBUG src/tiling.cpp : in function MergingTree, line 170 able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %i child 0: + 
+parent: + child 0: %i child 1: 1 
+parent: %i 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: br child 0: :L1 child 1: %fin 
+parent: :L1 
+parent: %fin child 0: < 
+parent: < child 0: %i child 1: 3 
+parent: %i 
+parent: 3 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %i child 0: + 
+parent: + child 0: %i child 1: 1 
+parent: %i 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: br child 0: :L1 child 1: %fin 
+parent: :L1 
+parent: %fin child 0: < 
+parent: < child 0: %i child 1: 3 
+parent: %i 
+parent: 3 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %i child 0: + 
+parent: + child 0: %i child 1: 1 
+parent: %i 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: br child 0: :L1 child 1: %fin 
+parent: :L1 
+parent: %fin child 0: < 
+parent: < child 0: %i child 1: 3 
+parent: %i 
+parent: 3 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%cGs <- call allocate(7, 1)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %cGs child 0: call 
+parent: call child 0: allocate 
+parent: allocate child 0: 7 child 1: 1 
+parent: 7 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %cGs child 0: call 
+parent: call child 0: allocate 
+parent: allocate child 0: 7 child 1: 1 
+parent: 7 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%i <- 0
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %i child 0: <- 
+parent: <- child 0: 0 
+parent: 0 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %i child 0: <- 
+parent: <- child 0: 0 
+parent: 0 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	:L2
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: :L2 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: :L2 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%f <- call @load(%ops, %i)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %f child 0: call 
+parent: call child 0: @load 
+parent: @load child 0: %ops child 1: %i 
+parent: %ops 
+parent: %i 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %f child 0: call 
+parent: call child 0: @load 
+parent: @load child 0: %ops child 1: %i 
+parent: %ops 
+parent: %i 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%cF <- call allocate(3, 1)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %cF child 0: call 
+parent: call child 0: allocate 
+parent: allocate child 0: 3 child 1: 1 
+parent: 3 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %cF child 0: call 
+parent: call child 0: allocate 
+parent: allocate child 0: 3 child 1: 1 
+parent: 3 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	call @store(%cF, 0, %f)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: call child 0: @store 
+parent: @store child 0: %cF child 1: 0 child 2: %f 
+parent: %cF 
+parent: 0 
+parent: %f 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: call child 0: @store 
+parent: @store child 0: %cF child 1: 0 child 2: %f 
+parent: %cF 
+parent: 0 
+parent: %f 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%cG <- call @curry(%cF)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %cG child 0: call 
+parent: call child 0: @curry 
+parent: @curry child 0: %cF 
+parent: %cF 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %cG child 0: call 
+parent: call child 0: @curry 
+parent: @curry child 0: %cF 
+parent: %cF 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	call @store(%cGs, %i, %cG)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: call child 0: @store 
+parent: @store child 0: %cGs child 1: %i child 2: %cG 
+parent: %cGs 
+parent: %i 
+parent: %cG 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: call child 0: @store 
+parent: @store child 0: %cGs child 1: %i child 2: %cG 
+parent: %cGs 
+parent: %i 
+parent: %cG 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%i <- %i + 1
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%fin <- %i < 3
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	br %fin :L2
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %i child 0: + 
+parent: + child 0: %i child 1: 1 
+parent: %i 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %fin child 0: < 
+parent: < child 0: %i child 1: 3 
+parent: %i 
+parent: 3 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: br child 0: :L2 child 1: %fin 
+parent: :L2 
+parent: %fin 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 127 %fin is dead
+DEBUG src/tiling.cpp : in function MergingTree, line 140 no other uses in [T2, T1)
+DEBUG src/tiling.cpp : in function MergingTree, line 155 no defs of variables used by T2 in [T2, T1)
+DEBUG src/tiling.cpp : in function MergingTree, line 170 able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %i child 0: + 
+parent: + child 0: %i child 1: 1 
+parent: %i 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: br child 0: :L2 child 1: %fin 
+parent: :L2 
+parent: %fin child 0: < 
+parent: < child 0: %i child 1: 3 
+parent: %i 
+parent: 3 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %i child 0: + 
+parent: + child 0: %i child 1: 1 
+parent: %i 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: br child 0: :L2 child 1: %fin 
+parent: :L2 
+parent: %fin child 0: < 
+parent: < child 0: %i child 1: 3 
+parent: %i 
+parent: 3 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %i child 0: + 
+parent: + child 0: %i child 1: 1 
+parent: %i 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: br child 0: :L2 child 1: %fin 
+parent: :L2 
+parent: %fin child 0: < 
+parent: < child 0: %i child 1: 3 
+parent: %i 
+parent: 3 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%i <- 0
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %i child 0: <- 
+parent: <- child 0: 0 
+parent: 0 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %i child 0: <- 
+parent: <- child 0: 0 
+parent: 0 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	:L3
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: :L3 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: :L3 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%cG <- call @load(%cGs, %i)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %cG child 0: call 
+parent: call child 0: @load 
+parent: @load child 0: %cGs child 1: %i 
+parent: %cGs 
+parent: %i 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %cG child 0: call 
+parent: call child 0: @load 
+parent: @load child 0: %cGs child 1: %i 
+parent: %cGs 
+parent: %i 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%g <- call @load(%cG, 0)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %g child 0: call 
+parent: call child 0: @load 
+parent: @load child 0: %cG child 1: 0 
+parent: %cG 
+parent: 0 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %g child 0: call 
+parent: call child 0: @load 
+parent: @load child 0: %cG child 1: 0 
+parent: %cG 
+parent: 0 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%cH <- call %g(%cG, %X)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %cH child 0: call 
+parent: call child 0: %g 
+parent: %g child 0: %cG child 1: %X 
+parent: %cG 
+parent: %X 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %cH child 0: call 
+parent: call child 0: %g 
+parent: %g child 0: %cG child 1: %X 
+parent: %cG 
+parent: %X 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%h <- call @load(%cH, 0)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %h child 0: call 
+parent: call child 0: @load 
+parent: @load child 0: %cH child 1: 0 
+parent: %cH 
+parent: 0 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %h child 0: call 
+parent: call child 0: @load 
+parent: @load child 0: %cH child 1: 0 
+parent: %cH 
+parent: 0 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%ans <- call %h(%cH, %Y)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %ans child 0: call 
+parent: call child 0: %h 
+parent: %h child 0: %cH child 1: %Y 
+parent: %cH 
+parent: %Y 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %ans child 0: call 
+parent: call child 0: %h 
+parent: %h child 0: %cH child 1: %Y 
+parent: %cH 
+parent: %Y 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%num <- %ans * 2
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%num <- %num + 1
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %num child 0: * 
+parent: * child 0: %ans child 1: 2 
+parent: %ans 
+parent: 2 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %num child 0: + 
+parent: + child 0: %num child 1: 1 
+parent: %num 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %num child 0: * 
+parent: * child 0: %ans child 1: 2 
+parent: %ans 
+parent: 2 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %num child 0: + 
+parent: + child 0: %num child 1: 1 
+parent: %num 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	call print(%num)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: call child 0: print 
+parent: print child 0: %num 
+parent: %num 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: call child 0: print 
+parent: print child 0: %num 
+parent: %num 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%i <- %i + 1
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%fin <- %i < 3
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	br %fin :L3
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %i child 0: + 
+parent: + child 0: %i child 1: 1 
+parent: %i 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %fin child 0: < 
+parent: < child 0: %i child 1: 3 
+parent: %i 
+parent: 3 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: br child 0: :L3 child 1: %fin 
+parent: :L3 
+parent: %fin 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 127 %fin is dead
+DEBUG src/tiling.cpp : in function MergingTree, line 140 no other uses in [T2, T1)
+DEBUG src/tiling.cpp : in function MergingTree, line 155 no defs of variables used by T2 in [T2, T1)
+DEBUG src/tiling.cpp : in function MergingTree, line 170 able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %i child 0: + 
+parent: + child 0: %i child 1: 1 
+parent: %i 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: br child 0: :L3 child 1: %fin 
+parent: :L3 
+parent: %fin child 0: < 
+parent: < child 0: %i child 1: 3 
+parent: %i 
+parent: 3 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %i child 0: + 
+parent: + child 0: %i child 1: 1 
+parent: %i 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: br child 0: :L3 child 1: %fin 
+parent: :L3 
+parent: %fin child 0: < 
+parent: < child 0: %i child 1: 3 
+parent: %i 
+parent: 3 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %i child 0: + 
+parent: + child 0: %i child 1: 1 
+parent: %i 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: br child 0: :L3 child 1: %fin 
+parent: :L3 
+parent: %fin child 0: < 
+parent: < child 0: %i child 1: 3 
+parent: %i 
+parent: 3 
 }
 DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	return
 DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
 DEBUG src/tiling.cpp : in function PrintTree, line 15 {
 parent: return 
 }
-DEBUG src/tiling.cpp : in function MergingTree, line 193 after merging
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
 DEBUG src/tiling.cpp : in function PrintTree, line 15 {
 parent: return 
+}
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%offset <- %idx * 8
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%dest <- %offset + 8
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%dest <- %offset + 8
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%addr <- %addr + %dest
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%addr <- %addr + %dest
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%value <- load %addr
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%value <- load %addr
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	return %value
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	return %value
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	return %value
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%value <- load %addr
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%addr <- %addr + %dest
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%dest <- %offset + 8
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%offset <- %idx * 8
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%value <- load %addr
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%addr <- %addr + %dest
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%dest <- %offset + 8
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%offset <- %idx * 8
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%offset <- %idx * 8
+
+{%addr, %idx}
+
+{%addr, %offset}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%dest <- %offset + 8
+
+{%addr, %offset}
+
+{%addr, %dest}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%addr <- %addr + %dest
+
+{%addr, %dest}
+
+{%addr}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%value <- load %addr
+
+{%addr}
+
+{%value}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	return %value
+
+{%value}
+
+{}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 138 247 times
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%offset <- %idx * 8
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%dest <- %offset + 8
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%dest <- %offset + 8
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%addr <- %addr + %dest
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%addr <- %addr + %dest
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%value <- load %addr
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%value <- load %addr
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	return %value
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	return %value
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	return %value
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%value <- load %addr
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%addr <- %addr + %dest
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%dest <- %offset + 8
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%offset <- %idx * 8
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%value <- load %addr
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%addr <- %addr + %dest
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%dest <- %offset + 8
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%offset <- %idx * 8
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%offset <- %idx * 8
+
+{%addr, %idx}
+
+{%addr, %offset}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%dest <- %offset + 8
+
+{%addr, %offset}
+
+{%addr, %dest}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%addr <- %addr + %dest
+
+{%addr, %dest}
+
+{%addr}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%value <- load %addr
+
+{%addr}
+
+{%value}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	return %value
+
+{%value}
+
+{}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 138 256 times
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%offset <- %idx * 8
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%dest <- %offset + 8
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%addr <- %addr + %dest
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%value <- load %addr
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	return %value
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %offset child 0: * 
+parent: * child 0: %idx child 1: 8 
+parent: %idx 
+parent: 8 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %dest child 0: + 
+parent: + child 0: %offset child 1: 8 
+parent: %offset 
+parent: 8 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %addr child 0: + 
+parent: + child 0: %addr child 1: %dest 
+parent: %addr 
+parent: %dest 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %value child 0: load 
+parent: load child 0: %addr 
+parent: %addr 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: return child 0: %value 
+parent: %value 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 127 %offset is dead
+DEBUG src/tiling.cpp : in function MergingTree, line 140 no other uses in [T2, T1)
+DEBUG src/tiling.cpp : in function MergingTree, line 155 no defs of variables used by T2 in [T2, T1)
+DEBUG src/tiling.cpp : in function MergingTree, line 170 able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 127 %dest is dead
+DEBUG src/tiling.cpp : in function MergingTree, line 140 no other uses in [T2, T1)
+DEBUG src/tiling.cpp : in function MergingTree, line 155 no defs of variables used by T2 in [T2, T1)
+DEBUG src/tiling.cpp : in function MergingTree, line 170 able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 127 %addr is dead
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 127 %value is dead
+DEBUG src/tiling.cpp : in function MergingTree, line 140 no other uses in [T2, T1)
+DEBUG src/tiling.cpp : in function MergingTree, line 155 no defs of variables used by T2 in [T2, T1)
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %addr child 0: + 
+parent: + child 0: %addr child 1: %dest 
+parent: %addr 
+parent: %dest child 0: + 
+parent: + child 0: %offset child 1: 8 
+parent: %offset child 0: * 
+parent: 8 
+parent: * child 0: %idx child 1: 8 
+parent: %idx 
+parent: 8 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %value child 0: load 
+parent: load child 0: %addr 
+parent: %addr 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: return child 0: %value 
+parent: %value 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %addr child 0: + 
+parent: + child 0: %addr child 1: %dest 
+parent: %addr 
+parent: %dest child 0: + 
+parent: + child 0: %offset child 1: 8 
+parent: %offset child 0: * 
+parent: 8 
+parent: * child 0: %idx child 1: 8 
+parent: %idx 
+parent: 8 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %value child 0: load 
+parent: load child 0: %addr 
+parent: %addr 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: return child 0: %value 
+parent: %value 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 127 %addr is dead
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 127 %value is dead
+DEBUG src/tiling.cpp : in function MergingTree, line 140 no other uses in [T2, T1)
+DEBUG src/tiling.cpp : in function MergingTree, line 155 no defs of variables used by T2 in [T2, T1)
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %addr child 0: + 
+parent: + child 0: %addr child 1: %dest 
+parent: %addr 
+parent: %dest child 0: + 
+parent: + child 0: %offset child 1: 8 
+parent: %offset child 0: * 
+parent: 8 
+parent: * child 0: %idx child 1: 8 
+parent: %idx 
+parent: 8 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %value child 0: load 
+parent: load child 0: %addr 
+parent: %addr 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: return child 0: %value 
+parent: %value 
+}
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%idx <- %idx + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%offset <- %idx * 8
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%offset <- %idx * 8
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%addr <- %addr + %offset
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%addr <- %addr + %offset
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	store %addr <- %value
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	store %addr <- %value
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	return
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	return
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	return
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	store %addr <- %value
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%addr <- %addr + %offset
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%offset <- %idx * 8
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%idx <- %idx + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%addr <- %addr + %offset
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%offset <- %idx * 8
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%idx <- %idx + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%idx <- %idx + 1
+
+{%addr, %idx, %value}
+
+{%addr, %idx, %value}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%offset <- %idx * 8
+
+{%addr, %idx, %value}
+
+{%addr, %offset, %value}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%addr <- %addr + %offset
+
+{%addr, %offset, %value}
+
+{%addr, %value}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	store %addr <- %value
+
+{%addr, %value}
+
+{}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	return
+
+{}
+
+{}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 138 264 times
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%idx <- %idx + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%offset <- %idx * 8
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%offset <- %idx * 8
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%addr <- %addr + %offset
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%addr <- %addr + %offset
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	store %addr <- %value
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	store %addr <- %value
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	return
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	return
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	return
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	store %addr <- %value
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%addr <- %addr + %offset
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%offset <- %idx * 8
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%idx <- %idx + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%addr <- %addr + %offset
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%offset <- %idx * 8
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%idx <- %idx + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%idx <- %idx + 1
+
+{%addr, %idx, %value}
+
+{%addr, %idx, %value}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%offset <- %idx * 8
+
+{%addr, %idx, %value}
+
+{%addr, %offset, %value}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%addr <- %addr + %offset
+
+{%addr, %offset, %value}
+
+{%addr, %value}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	store %addr <- %value
+
+{%addr, %value}
+
+{}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	return
+
+{}
+
+{}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 138 272 times
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%idx <- %idx + 1
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%offset <- %idx * 8
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%addr <- %addr + %offset
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	store %addr <- %value
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	return
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %idx child 0: + 
+parent: + child 0: %idx child 1: 1 
+parent: %idx 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %offset child 0: * 
+parent: * child 0: %idx child 1: 8 
+parent: %idx 
+parent: 8 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %addr child 0: + 
+parent: + child 0: %addr child 1: %offset 
+parent: %addr 
+parent: %offset 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: store child 0: %addr child 1: %value 
+parent: %addr 
+parent: %value 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: return 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 127 %idx is dead
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 127 %offset is dead
+DEBUG src/tiling.cpp : in function MergingTree, line 140 no other uses in [T2, T1)
+DEBUG src/tiling.cpp : in function MergingTree, line 155 no defs of variables used by T2 in [T2, T1)
+DEBUG src/tiling.cpp : in function MergingTree, line 170 able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 127 %addr is dead
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %idx child 0: + 
+parent: + child 0: %idx child 1: 1 
+parent: %idx 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %addr child 0: + 
+parent: + child 0: %addr child 1: %offset 
+parent: %addr 
+parent: %offset child 0: * 
+parent: * child 0: %idx child 1: 8 
+parent: %idx 
+parent: 8 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: store child 0: %addr child 1: %value 
+parent: %addr 
+parent: %value 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: return 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %idx child 0: + 
+parent: + child 0: %idx child 1: 1 
+parent: %idx 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %addr child 0: + 
+parent: + child 0: %addr child 1: %offset 
+parent: %addr 
+parent: %offset child 0: * 
+parent: * child 0: %idx child 1: 8 
+parent: %idx 
+parent: 8 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: store child 0: %addr child 1: %value 
+parent: %addr 
+parent: %value 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: return 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 127 %idx is dead
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 127 %addr is dead
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %idx child 0: + 
+parent: + child 0: %idx child 1: 1 
+parent: %idx 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %addr child 0: + 
+parent: + child 0: %addr child 1: %offset 
+parent: %addr 
+parent: %offset child 0: * 
+parent: * child 0: %idx child 1: 8 
+parent: %idx 
+parent: 8 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: store child 0: %addr child 1: %value 
+parent: %addr 
+parent: %value 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: return 
+}
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%cF <- call allocate(5, 1)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%func <- @curry_arg1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%func <- @curry_arg1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	call @store(%cF, 0, %func)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	call @store(%cF, 0, %func)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	call @store(%cF, 1, %F)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	call @store(%cF, 1, %F)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	return %cF
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	return %cF
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	return %cF
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cF, 1, %F)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cF, 0, %func)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%func <- @curry_arg1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cF <- call allocate(5, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cF, 1, %F)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cF, 0, %func)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%func <- @curry_arg1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cF <- call allocate(5, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%cF <- call allocate(5, 1)
+
+{%F}
+
+{%F, %cF}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%func <- @curry_arg1
+
+{%F, %cF}
+
+{%F, %cF, %func}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	call @store(%cF, 0, %func)
+
+{%F, %cF, %func}
+
+{%F, %cF}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	call @store(%cF, 1, %F)
+
+{%F, %cF}
+
+{%cF}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	return %cF
+
+{%cF}
+
+{}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 138 281 times
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%cF <- call allocate(5, 1)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%func <- @curry_arg1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%func <- @curry_arg1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	call @store(%cF, 0, %func)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	call @store(%cF, 0, %func)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	call @store(%cF, 1, %F)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	call @store(%cF, 1, %F)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	return %cF
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	return %cF
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	return %cF
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cF, 1, %F)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cF, 0, %func)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%func <- @curry_arg1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cF <- call allocate(5, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cF, 1, %F)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cF, 0, %func)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%func <- @curry_arg1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cF <- call allocate(5, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%cF <- call allocate(5, 1)
+
+{%F}
+
+{%F, %cF}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%func <- @curry_arg1
+
+{%F, %cF}
+
+{%F, %cF, %func}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	call @store(%cF, 0, %func)
+
+{%F, %cF, %func}
+
+{%F, %cF}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	call @store(%cF, 1, %F)
+
+{%F, %cF}
+
+{%cF}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	return %cF
+
+{%cF}
+
+{}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 138 290 times
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%cF <- call allocate(5, 1)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %cF child 0: call 
+parent: call child 0: allocate 
+parent: allocate child 0: 5 child 1: 1 
+parent: 5 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %cF child 0: call 
+parent: call child 0: allocate 
+parent: allocate child 0: 5 child 1: 1 
+parent: 5 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%func <- @curry_arg1
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %func child 0: <- 
+parent: <- child 0: @curry_arg1 
+parent: @curry_arg1 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %func child 0: <- 
+parent: <- child 0: @curry_arg1 
+parent: @curry_arg1 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	call @store(%cF, 0, %func)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: call child 0: @store 
+parent: @store child 0: %cF child 1: 0 child 2: %func 
+parent: %cF 
+parent: 0 
+parent: %func 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: call child 0: @store 
+parent: @store child 0: %cF child 1: 0 child 2: %func 
+parent: %cF 
+parent: 0 
+parent: %func 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	call @store(%cF, 1, %F)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: call child 0: @store 
+parent: @store child 0: %cF child 1: 1 child 2: %F 
+parent: %cF 
+parent: 1 
+parent: %F 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: call child 0: @store 
+parent: @store child 0: %cF child 1: 1 child 2: %F 
+parent: %cF 
+parent: 1 
+parent: %F 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	return %cF
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: return child 0: %cF 
+parent: %cF 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: return child 0: %cF 
+parent: %cF 
+}
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%cF1 <- call allocate(7, 1)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%func <- @curry_arg2
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%func <- @curry_arg2
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%F <- call @load(%self, 1)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%F <- call @load(%self, 1)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	call @store(%cF1, 0, %func)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	call @store(%cF1, 0, %func)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	call @store(%cF1, 1, %F)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	call @store(%cF1, 1, %F)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	call @store(%cF1, 2, %x)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	call @store(%cF1, 2, %x)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	return %cF1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	return %cF1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	return %cF1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cF1, 2, %x)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cF1, 1, %F)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cF1, 0, %func)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%F <- call @load(%self, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%func <- @curry_arg2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cF1 <- call allocate(7, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cF1, 2, %x)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cF1, 1, %F)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cF1, 0, %func)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%F <- call @load(%self, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%func <- @curry_arg2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cF1 <- call allocate(7, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%cF1 <- call allocate(7, 1)
+
+{%self, %x}
+
+{%cF1, %self, %x}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%func <- @curry_arg2
+
+{%cF1, %self, %x}
+
+{%cF1, %func, %self, %x}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%F <- call @load(%self, 1)
+
+{%cF1, %func, %self, %x}
+
+{%F, %cF1, %func, %x}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	call @store(%cF1, 0, %func)
+
+{%F, %cF1, %func, %x}
+
+{%F, %cF1, %x}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	call @store(%cF1, 1, %F)
+
+{%F, %cF1, %x}
+
+{%cF1, %x}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	call @store(%cF1, 2, %x)
+
+{%cF1, %x}
+
+{%cF1}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	return %cF1
+
+{%cF1}
+
+{}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 138 303 times
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%cF1 <- call allocate(7, 1)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%func <- @curry_arg2
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%func <- @curry_arg2
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%F <- call @load(%self, 1)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%F <- call @load(%self, 1)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	call @store(%cF1, 0, %func)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	call @store(%cF1, 0, %func)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	call @store(%cF1, 1, %F)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	call @store(%cF1, 1, %F)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	call @store(%cF1, 2, %x)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	call @store(%cF1, 2, %x)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	return %cF1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	return %cF1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	return %cF1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cF1, 2, %x)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cF1, 1, %F)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cF1, 0, %func)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%F <- call @load(%self, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%func <- @curry_arg2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cF1 <- call allocate(7, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cF1, 2, %x)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cF1, 1, %F)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call @store(%cF1, 0, %func)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%F <- call @load(%self, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%func <- @curry_arg2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%cF1 <- call allocate(7, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%cF1 <- call allocate(7, 1)
+
+{%self, %x}
+
+{%cF1, %self, %x}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%func <- @curry_arg2
+
+{%cF1, %self, %x}
+
+{%cF1, %func, %self, %x}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%F <- call @load(%self, 1)
+
+{%cF1, %func, %self, %x}
+
+{%F, %cF1, %func, %x}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	call @store(%cF1, 0, %func)
+
+{%F, %cF1, %func, %x}
+
+{%F, %cF1, %x}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	call @store(%cF1, 1, %F)
+
+{%F, %cF1, %x}
+
+{%cF1, %x}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	call @store(%cF1, 2, %x)
+
+{%cF1, %x}
+
+{%cF1}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	return %cF1
+
+{%cF1}
+
+{}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 138 316 times
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%cF1 <- call allocate(7, 1)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %cF1 child 0: call 
+parent: call child 0: allocate 
+parent: allocate child 0: 7 child 1: 1 
+parent: 7 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %cF1 child 0: call 
+parent: call child 0: allocate 
+parent: allocate child 0: 7 child 1: 1 
+parent: 7 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%func <- @curry_arg2
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %func child 0: <- 
+parent: <- child 0: @curry_arg2 
+parent: @curry_arg2 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %func child 0: <- 
+parent: <- child 0: @curry_arg2 
+parent: @curry_arg2 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%F <- call @load(%self, 1)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %F child 0: call 
+parent: call child 0: @load 
+parent: @load child 0: %self child 1: 1 
+parent: %self 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %F child 0: call 
+parent: call child 0: @load 
+parent: @load child 0: %self child 1: 1 
+parent: %self 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	call @store(%cF1, 0, %func)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: call child 0: @store 
+parent: @store child 0: %cF1 child 1: 0 child 2: %func 
+parent: %cF1 
+parent: 0 
+parent: %func 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: call child 0: @store 
+parent: @store child 0: %cF1 child 1: 0 child 2: %func 
+parent: %cF1 
+parent: 0 
+parent: %func 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	call @store(%cF1, 1, %F)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: call child 0: @store 
+parent: @store child 0: %cF1 child 1: 1 child 2: %F 
+parent: %cF1 
+parent: 1 
+parent: %F 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: call child 0: @store 
+parent: @store child 0: %cF1 child 1: 1 child 2: %F 
+parent: %cF1 
+parent: 1 
+parent: %F 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	call @store(%cF1, 2, %x)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: call child 0: @store 
+parent: @store child 0: %cF1 child 1: 2 child 2: %x 
+parent: %cF1 
+parent: 2 
+parent: %x 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: call child 0: @store 
+parent: @store child 0: %cF1 child 1: 2 child 2: %x 
+parent: %cF1 
+parent: 2 
+parent: %x 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	return %cF1
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: return child 0: %cF1 
+parent: %cF1 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: return child 0: %cF1 
+parent: %cF1 
+}
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%F <- call @load(%self, 1)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%x <- call @load(%self, 2)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%x <- call @load(%self, 2)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%func <- call @load(%F, 0)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%func <- call @load(%F, 0)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%ans <- call %func(%F, %x, %y)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%ans <- call %func(%F, %x, %y)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	return %ans
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	return %ans
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	return %ans
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ans <- call %func(%F, %x, %y)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%func <- call @load(%F, 0)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%x <- call @load(%self, 2)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%F <- call @load(%self, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ans <- call %func(%F, %x, %y)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%func <- call @load(%F, 0)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%x <- call @load(%self, 2)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%F <- call @load(%self, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%F <- call @load(%self, 1)
+
+{%self, %y}
+
+{%F, %self, %y}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%x <- call @load(%self, 2)
+
+{%F, %self, %y}
+
+{%F, %x, %y}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%func <- call @load(%F, 0)
+
+{%F, %x, %y}
+
+{%F, %func, %x, %y}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%ans <- call %func(%F, %x, %y)
+
+{%F, %func, %x, %y}
+
+{%ans}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	return %ans
+
+{%ans}
+
+{}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 138 325 times
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%F <- call @load(%self, 1)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%x <- call @load(%self, 2)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%x <- call @load(%self, 2)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%func <- call @load(%F, 0)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%func <- call @load(%F, 0)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%ans <- call %func(%F, %x, %y)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%ans <- call %func(%F, %x, %y)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	return %ans
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	return %ans
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	return %ans
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ans <- call %func(%F, %x, %y)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%func <- call @load(%F, 0)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%x <- call @load(%self, 2)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%F <- call @load(%self, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%ans <- call %func(%F, %x, %y)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%func <- call @load(%F, 0)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%x <- call @load(%self, 2)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%F <- call @load(%self, 1)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%F <- call @load(%self, 1)
+
+{%self, %y}
+
+{%F, %self, %y}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%x <- call @load(%self, 2)
+
+{%F, %self, %y}
+
+{%F, %x, %y}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%func <- call @load(%F, 0)
+
+{%F, %x, %y}
+
+{%F, %func, %x, %y}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%ans <- call %func(%F, %x, %y)
+
+{%F, %func, %x, %y}
+
+{%ans}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	return %ans
+
+{%ans}
+
+{}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 138 334 times
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%F <- call @load(%self, 1)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %F child 0: call 
+parent: call child 0: @load 
+parent: @load child 0: %self child 1: 1 
+parent: %self 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %F child 0: call 
+parent: call child 0: @load 
+parent: @load child 0: %self child 1: 1 
+parent: %self 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%x <- call @load(%self, 2)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %x child 0: call 
+parent: call child 0: @load 
+parent: @load child 0: %self child 1: 2 
+parent: %self 
+parent: 2 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %x child 0: call 
+parent: call child 0: @load 
+parent: @load child 0: %self child 1: 2 
+parent: %self 
+parent: 2 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%func <- call @load(%F, 0)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %func child 0: call 
+parent: call child 0: @load 
+parent: @load child 0: %F child 1: 0 
+parent: %F 
+parent: 0 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %func child 0: call 
+parent: call child 0: @load 
+parent: @load child 0: %F child 1: 0 
+parent: %F 
+parent: 0 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%ans <- call %func(%F, %x, %y)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %ans child 0: call 
+parent: call child 0: %func 
+parent: %func child 0: %F child 1: %x child 2: %y 
+parent: %F 
+parent: %x 
+parent: %y 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %ans child 0: call 
+parent: call child 0: %func 
+parent: %func child 0: %F child 1: %x child 2: %y 
+parent: %F 
+parent: %x 
+parent: %y 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	return %ans
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: return child 0: %ans 
+parent: %ans 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 196 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: return child 0: %ans 
+parent: %ans 
 }

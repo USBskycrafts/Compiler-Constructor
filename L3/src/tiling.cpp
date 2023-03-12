@@ -173,6 +173,9 @@ success:
           for(auto n : leaves) {
             if(v->code == n->code) {
               std::copy(v->children.begin(), v->children.end(), std::back_inserter(n->children));
+              auto iter = std::find_if((*i)->defs.begin(), (*i)->defs.end(),
+                  [&](L3::Variable* var){ return var->name == v->code; });
+              (*i)->defs.erase(iter);
               (*j)->defs.insert((*i)->defs.begin(), (*i)->defs.end());
               (*j)->uses.insert((*i)->uses.begin(), (*i)->uses.end());
               (*j)->ins.insert((*i)->ins.begin(), (*i)->ins.end());
