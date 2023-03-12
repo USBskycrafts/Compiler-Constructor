@@ -34,6 +34,10 @@ namespace Tiling {
     result = LivenessAnalysis::Analyze(function);
     auto context = Context();
     for(auto inst : function->instructions) {
+      if(inst->type == "CallInst" || inst->type == "LabelInst") {
+        contexts.push_back(context);
+        context = Context();
+      }
       context.instructions.emplace_back(inst);
       if(inst->type == "CallInst" || inst->type == "LabelInst" 
           || inst->type == "BranchInst" || inst->type == "ReturnInst") {
@@ -41,7 +45,7 @@ namespace Tiling {
         context = Context();
       }
 #ifdef DEBUG
-      DEBUG_COUT << "solving: " << inst->ToString();
+      //DEBUG_COUT << "solving: " << inst->ToString();
 #endif
       
     }
@@ -120,7 +124,7 @@ success:
             }
           }
 #ifdef DEBUG
-          DEBUG_COUT << v->code << " is not dead\n";
+          DEBUG_COUT << v->code << " is dead\n";
 #endif
           //no other uses in [T2, T1)
           VariableSet var_set;

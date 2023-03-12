@@ -63,7 +63,7 @@ namespace L3 {
 
   class AssignInst : public Instruction {
     public:
-      virtual void accept(Visitor* visitor);
+      virtual void accept(Visitor* visitor) override;
       AssignInst(Variable* lhs, Item* rhs) : lhs(lhs), rhs(rhs) { type = "AssignInst"; }
       std::vector<Variable*> GetDefs() override;
       std::vector<Variable*> GetUses() override;
@@ -74,7 +74,7 @@ namespace L3 {
 
   class BinaryOperator : public Instruction {
     public:
-      virtual void accept(Visitor* visitor);
+      virtual void accept(Visitor* visitor) override;
       BinaryOperator(Variable* lhs, Item* t1, Operator* op, Item* t2);
       std::vector<Variable*> GetDefs() override;
       std::vector<Variable*> GetUses() override;
@@ -85,7 +85,7 @@ namespace L3 {
 
   class ReturnInst : public Instruction {
     public:
-      virtual void accept(Visitor* visitor);
+      virtual void accept(Visitor* visitor) override;
       ReturnInst(Item* ret_val) : ret_val(ret_val) { type = "ReturnInst"; }
       std::vector<Variable*> GetDefs() override;
       std::vector<Variable*> GetUses() override;
@@ -95,7 +95,7 @@ namespace L3 {
 
   class LabelInst : public Instruction {
     public:
-      virtual void accept(Visitor* visitor);
+      virtual void accept(Visitor* visitor) override;
       LabelInst(Label* label) : label(label) { type = "LabelInst"; }
       std::vector<Variable*> GetDefs() override;
       std::vector<Variable*> GetUses() override;
@@ -105,7 +105,7 @@ namespace L3 {
 
   class BranchInst : public Instruction {
     public:
-      virtual void accept(Visitor* visitor);
+      virtual void accept(Visitor* visitor) override;
       BranchInst(Item* t, Label* label) : t(t), label(label) { type = "BranchInst"; }
       std::vector<Variable*> GetDefs() override;
       std::vector<Variable*> GetUses() override;
@@ -116,7 +116,7 @@ namespace L3 {
 
   class LoadInst : public Instruction {
     public:
-      virtual void accept(Visitor* visitor);
+      virtual void accept(Visitor* visitor) override;
       LoadInst(Variable* lhs, Variable* rhs) : lhs(lhs), rhs(rhs) { type = "LoadInst"; }
       std::vector<Variable*> GetDefs() override;
       std::vector<Variable*> GetUses() override;
@@ -127,7 +127,7 @@ namespace L3 {
 
   class StoreInst : public Instruction {
     public:
-      virtual void accept(Visitor* visitor);
+      virtual void accept(Visitor* visitor) override;
       StoreInst(Variable* lhs, Item* rhs) : lhs(lhs), rhs(rhs) { type = "StoreInst"; }
       std::vector<Variable*> GetDefs() override;
       std::vector<Variable*> GetUses() override;
@@ -138,7 +138,7 @@ namespace L3 {
 
   class CallInst : public Instruction {
     public:
-      virtual void accept(Visitor* visitor);
+      virtual void accept(Visitor* visitor) override;
       CallInst(Variable* lhs, Item* name, std::vector<Item*> args)
           : lhs(lhs), callee(name), args(args) { type = "CallInst"; }
       std::vector<Variable*> GetDefs() override;

@@ -1,0 +1,349 @@
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%v <- 2
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%v <- 1 - %v
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%v <- 1 - %v
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%w <- %v
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%w <- %v
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%w <- %w << 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%w <- %w << 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%w <- %w + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%w <- %w + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	call print(%w)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	call print(%w)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	return
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	return
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	return
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call print(%w)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%w <- %w + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%w <- %w << 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%w <- %v
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%v <- 1 - %v
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%v <- 2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%w <- %w + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%w <- %w << 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%w <- %v
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%v <- 1 - %v
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%v <- 2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%v <- 2
+
+{}
+
+{%v}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%v <- 1 - %v
+
+{%v}
+
+{%v}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%w <- %v
+
+{%v}
+
+{%w}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%w <- %w << 1
+
+{%w}
+
+{%w}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%w <- %w + 1
+
+{%w}
+
+{%w}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	call print(%w)
+
+{%w}
+
+{}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	return
+
+{}
+
+{}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 138 12 times
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%v <- 2
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%v <- 1 - %v
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%v <- 1 - %v
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%w <- %v
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%w <- %v
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%w <- %w << 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%w <- %w << 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	%w <- %w + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	%w <- %w + 1
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	call print(%w)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	call print(%w)
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 93 	return
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 90 current: 	return
+DEBUG src/liveness-analysis.cpp : in function GenerateControlFlow, line 91 successors are: 
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	return
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	call print(%w)
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%w <- %w + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%w <- %w << 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%w <- %v
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%v <- 1 - %v
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%v <- 2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%w <- %w + 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%w <- %w << 1
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%w <- %v
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%v <- 1 - %v
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 113 	%v <- 2
+
+{}
+ 
+{}
+
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%v <- 2
+
+{}
+
+{%v}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%v <- 1 - %v
+
+{%v}
+
+{%v}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%w <- %v
+
+{%v}
+
+{%w}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%w <- %w << 1
+
+{%w}
+
+{%w}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	%w <- %w + 1
+
+{%w}
+
+{%w}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	call print(%w)
+
+{%w}
+
+{}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 136 	return
+
+{}
+
+{}
+DEBUG src/liveness-analysis.cpp : in function GenerateInAndOut, line 138 24 times
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%v <- 2
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%v <- 1 - %v
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%w <- %v
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%w <- %w << 1
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	%w <- %w + 1
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %v child 0: <- 
+parent: <- child 0: 2 
+parent: 2 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %v child 0: - 
+parent: - child 0: 1 child 1: %v 
+parent: 1 
+parent: %v 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %w child 0: <- 
+parent: <- child 0: %v 
+parent: %v 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %w child 0: << 
+parent: << child 0: %w child 1: 1 
+parent: %w 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %w child 0: + 
+parent: + child 0: %w child 1: 1 
+parent: %w 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 127 %v is dead
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 127 %v is dead
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 118 probably able to merge
+DEBUG src/tiling.cpp : in function MergingTree, line 193 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %v child 0: <- 
+parent: <- child 0: 2 
+parent: 2 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %v child 0: - 
+parent: - child 0: 1 child 1: %v 
+parent: 1 
+parent: %v 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %w child 0: <- 
+parent: <- child 0: %v 
+parent: %v 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %w child 0: << 
+parent: << child 0: %w child 1: 1 
+parent: %w 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: %w child 0: + 
+parent: + child 0: %w child 1: 1 
+parent: %w 
+parent: 1 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	call print(%w)
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: call child 0: print 
+parent: print child 0: %w 
+parent: %w 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 193 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: call child 0: print 
+parent: print child 0: %w 
+parent: %w 
+}
+DEBUG src/tiling.cpp : in function GenerateTree, line 70 generate tree of	return
+DEBUG src/tiling.cpp : in function MergingTree, line 96 before merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: return 
+}
+DEBUG src/tiling.cpp : in function MergingTree, line 193 after merging
+DEBUG src/tiling.cpp : in function PrintTree, line 15 {
+parent: return 
+}
