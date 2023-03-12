@@ -167,7 +167,7 @@ success:
   }
 
   void TreeGenerator::visit(L3::Instruction* inst) {
-    this->visit(inst);
+    inst->accept(this);
   }
 
   void TreeGenerator::visit(L3::AssignInst* inst) {
@@ -181,11 +181,13 @@ success:
     r_node->code = rhs->name;
     l_node->children.push_back(op);
     op->children.push_back(r_node);
+    tree = new Tree;
     tree->root = l_node;
-    tree->defs.insert(inst->GetDefs().begin(), inst->GetDefs().end());
-    tree->uses.insert(inst->GetUses().begin(), inst->GetUses().end());
-    tree->ins.insert(result.in_set[inst].begin(), result.in_set[inst].end());
-    tree->outs.insert(result.out_set[inst].begin(), result.out_set[inst].end());
+    auto defs = inst->GetDefs(), uses = inst->GetDefs();
+    std::copy(defs.begin(), defs.end(), std::inserter(tree->defs, tree->defs.begin()));
+    std::copy(uses.begin(), uses.end(), std::inserter(tree->uses, tree->uses.begin()));
+    std::copy(result.in_set[inst].begin(), result.in_set[inst].end(), std::inserter(tree->ins, tree->ins.begin()));
+    std::copy(result.out_set[inst].begin(), result.out_set[inst].end(), std::inserter(tree->outs, tree->outs.begin()));
   }
 
   void TreeGenerator::visit(L3::BinaryOperator* inst) {
@@ -204,11 +206,13 @@ success:
     l_node->children.push_back(op_node);
     op_node->children.push_back(t1_node);
     op_node->children.push_back(t2_node);
+    tree = new Tree;
     tree->root = l_node;
-    tree->defs.insert(inst->GetDefs().begin(), inst->GetDefs().end());
-    tree->uses.insert(inst->GetUses().begin(), inst->GetUses().end());
-    tree->ins.insert(result.in_set[inst].begin(), result.in_set[inst].end());
-    tree->outs.insert(result.out_set[inst].begin(), result.out_set[inst].end());
+    auto defs = inst->GetDefs(), uses = inst->GetDefs();
+    std::copy(defs.begin(), defs.end(), std::inserter(tree->defs, tree->defs.begin()));
+    std::copy(uses.begin(), uses.end(), std::inserter(tree->uses, tree->uses.begin()));
+    std::copy(result.in_set[inst].begin(), result.in_set[inst].end(), std::inserter(tree->ins, tree->ins.begin()));
+    std::copy(result.out_set[inst].begin(), result.out_set[inst].end(), std::inserter(tree->outs, tree->outs.begin()));
   }
 
   void TreeGenerator::visit(L3::ReturnInst* inst) {
@@ -217,21 +221,25 @@ success:
     auto ret_node = new Node;
     ret_node->code = inst->ret_val->name;
     op_node->children.push_back(ret_node);
+    tree = new Tree;
     tree->root = op_node;
-    tree->defs.insert(inst->GetDefs().begin(), inst->GetDefs().end());
-    tree->uses.insert(inst->GetUses().begin(), inst->GetUses().end());
-    tree->ins.insert(result.in_set[inst].begin(), result.in_set[inst].end());
-    tree->outs.insert(result.out_set[inst].begin(), result.out_set[inst].end());
+    auto defs = inst->GetDefs(), uses = inst->GetDefs();
+    std::copy(defs.begin(), defs.end(), std::inserter(tree->defs, tree->defs.begin()));
+    std::copy(uses.begin(), uses.end(), std::inserter(tree->uses, tree->uses.begin()));
+    std::copy(result.in_set[inst].begin(), result.in_set[inst].end(), std::inserter(tree->ins, tree->ins.begin()));
+    std::copy(result.out_set[inst].begin(), result.out_set[inst].end(), std::inserter(tree->outs, tree->outs.begin()));
   }
 
   void TreeGenerator::visit(L3::LabelInst* inst) {
     auto label_node = new Node;
     label_node->code = inst->label->name;
+    tree = new Tree;
     tree->root = label_node;
-    tree->defs.insert(inst->GetDefs().begin(), inst->GetDefs().end());
-    tree->uses.insert(inst->GetUses().begin(), inst->GetUses().end());
-    tree->ins.insert(result.in_set[inst].begin(), result.in_set[inst].end());
-    tree->outs.insert(result.out_set[inst].begin(), result.out_set[inst].end());
+    auto defs = inst->GetDefs(), uses = inst->GetDefs();
+    std::copy(defs.begin(), defs.end(), std::inserter(tree->defs, tree->defs.begin()));
+    std::copy(uses.begin(), uses.end(), std::inserter(tree->uses, tree->uses.begin()));
+    std::copy(result.in_set[inst].begin(), result.in_set[inst].end(), std::inserter(tree->ins, tree->ins.begin()));
+    std::copy(result.out_set[inst].begin(), result.out_set[inst].end(), std::inserter(tree->outs, tree->outs.begin()));
   }
 
   void TreeGenerator::visit(L3::BranchInst* inst) {
@@ -245,11 +253,13 @@ success:
       t_node->code = inst->t->name;
       op_node->children.push_back(t_node);
     }
+    tree = new Tree;
     tree->root = op_node;
-    tree->defs.insert(inst->GetDefs().begin(), inst->GetDefs().end());
-    tree->uses.insert(inst->GetUses().begin(), inst->GetUses().end());
-    tree->ins.insert(result.in_set[inst].begin(), result.in_set[inst].end());
-    tree->outs.insert(result.out_set[inst].begin(), result.out_set[inst].end());
+    auto defs = inst->GetDefs(), uses = inst->GetDefs();
+    std::copy(defs.begin(), defs.end(), std::inserter(tree->defs, tree->defs.begin()));
+    std::copy(uses.begin(), uses.end(), std::inserter(tree->uses, tree->uses.begin()));
+    std::copy(result.in_set[inst].begin(), result.in_set[inst].end(), std::inserter(tree->ins, tree->ins.begin()));
+    std::copy(result.out_set[inst].begin(), result.out_set[inst].end(), std::inserter(tree->outs, tree->outs.begin()));
   }
 
   void TreeGenerator::visit(L3::LoadInst* inst) {
@@ -261,11 +271,13 @@ success:
     rhs_node->code = inst->rhs->name;
     lhs_node->children.push_back(op_node);
     op_node->children.push_back(rhs_node);
+    tree = new Tree;
     tree->root = lhs_node;
-    tree->defs.insert(inst->GetDefs().begin(), inst->GetDefs().end());
-    tree->uses.insert(inst->GetUses().begin(), inst->GetUses().end());
-    tree->ins.insert(result.in_set[inst].begin(), result.in_set[inst].end());
-    tree->outs.insert(result.out_set[inst].begin(), result.out_set[inst].end());
+    auto defs = inst->GetDefs(), uses = inst->GetDefs();
+    std::copy(defs.begin(), defs.end(), std::inserter(tree->defs, tree->defs.begin()));
+    std::copy(uses.begin(), uses.end(), std::inserter(tree->uses, tree->uses.begin()));
+    std::copy(result.in_set[inst].begin(), result.in_set[inst].end(), std::inserter(tree->ins, tree->ins.begin()));
+    std::copy(result.out_set[inst].begin(), result.out_set[inst].end(), std::inserter(tree->outs, tree->outs.begin()));
   }
 
   void TreeGenerator::visit(L3::StoreInst* inst) {
@@ -277,14 +289,17 @@ success:
     rhs->code = inst->rhs->name;
     op_node->children.push_back(addr_node);
     op_node->children.push_back(rhs);
+    tree = new Tree;
     tree->root = op_node;
-    tree->defs.insert(inst->GetDefs().begin(), inst->GetDefs().end());
-    tree->uses.insert(inst->GetUses().begin(), inst->GetUses().end());
-    tree->ins.insert(result.in_set[inst].begin(), result.in_set[inst].end());
-    tree->outs.insert(result.out_set[inst].begin(), result.out_set[inst].end());
+    auto defs = inst->GetDefs(), uses = inst->GetDefs();
+    std::copy(defs.begin(), defs.end(), std::inserter(tree->defs, tree->defs.begin()));
+    std::copy(uses.begin(), uses.end(), std::inserter(tree->uses, tree->uses.begin()));
+    std::copy(result.in_set[inst].begin(), result.in_set[inst].end(), std::inserter(tree->ins, tree->ins.begin()));
+    std::copy(result.out_set[inst].begin(), result.out_set[inst].end(), std::inserter(tree->outs, tree->outs.begin()));
   }
 
   void TreeGenerator::visit(L3::CallInst* inst) {
+    tree = new Tree;
     if(inst->lhs) {
       auto lhs_node = new Node;
       lhs_node->code = inst->lhs->name;
@@ -303,10 +318,11 @@ success:
       arg_node->code = arg->name;
       root->children.push_back(arg_node);
     }
-    tree->defs.insert(inst->GetDefs().begin(), inst->GetDefs().end());
-    tree->uses.insert(inst->GetUses().begin(), inst->GetUses().end());
-    tree->ins.insert(result.in_set[inst].begin(), result.in_set[inst].end());
-    tree->outs.insert(result.out_set[inst].begin(), result.out_set[inst].end());
+    auto defs = inst->GetDefs(), uses = inst->GetDefs();
+    std::copy(defs.begin(), defs.end(), std::inserter(tree->defs, tree->defs.begin()));
+    std::copy(uses.begin(), uses.end(), std::inserter(tree->uses, tree->uses.begin()));
+    std::copy(result.in_set[inst].begin(), result.in_set[inst].end(), std::inserter(tree->ins, tree->ins.begin()));
+    std::copy(result.out_set[inst].begin(), result.out_set[inst].end(), std::inserter(tree->outs, tree->outs.begin()));
   }
 
 }

@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <sstream>
+#include <tuple>
 #include "utils.hpp"
 #include "visitor.hpp"
 
@@ -15,9 +16,17 @@ namespace L3 {
     this->type = ItemType::kLabel;
   }
 
+  void Label::accept(Visitor* visitor) {
+    visitor->visit(this);
+  }
+
   FunctionName::FunctionName(std::string name) {
     this->name = name;
     this->type = ItemType::kFunctionName;
+  }
+
+  void FunctionName::accept(Visitor* visitor) {
+    visitor->visit(this);
   }
 
   Operator::Operator(std::string name) {
@@ -25,9 +34,17 @@ namespace L3 {
     this->type = ItemType::kOperator;
   }
 
+  void Operator::accept(Visitor* visitor) {
+    visitor->visit(this);
+  }
+
   Variable::Variable(std::string name) {
     this->name = name;
     this->type = ItemType::kVariable;
+  }
+
+  void Variable::accept(Visitor* visitor) {
+    visitor->visit(this);
   }
 
   Number::Number(std::string name) {
@@ -35,9 +52,14 @@ namespace L3 {
     this->type = ItemType::kNumber;
   }
 
-   void Instruction::accept(Visitor* visitor) {
+  void Number::accept(Visitor* visitor) {
     visitor->visit(this);
   }
+
+  void Instruction::accept(Visitor* visitor) {
+    visitor->visit(this);
+  }
+  
 
   std::vector<Variable*> AssignInst::GetDefs() {
     return {lhs};
@@ -55,6 +77,10 @@ namespace L3 {
     std::stringstream code;
     code << INDENT(1) << lhs->name << " <- " << rhs->name << std::endl;
     return code.str();
+  }
+
+  void AssignInst::accept(Visitor* visitor) {
+    visitor->visit(this);
   }
 
   BinaryOperator::BinaryOperator(Variable* lhs, Item* t1, Operator* op, Item* t2) {
@@ -88,6 +114,10 @@ namespace L3 {
     return code.str();
   }
 
+  void BinaryOperator::accept(Visitor* visitor) {
+    visitor->visit(this);
+  }
+
   std::vector<Variable*> ReturnInst::GetDefs() {
     return {};
   }
@@ -110,6 +140,10 @@ namespace L3 {
     return code.str();
   }
 
+  void ReturnInst::accept(Visitor* visitor) {
+    visitor->visit(this);
+  }
+
   std::vector<Variable*> LabelInst::GetDefs() {
     return {};
   }
@@ -122,6 +156,10 @@ namespace L3 {
     std::stringstream code;
     code << INDENT(1) << label->name << std::endl;
     return code.str();
+  }
+
+  void LabelInst::accept(Visitor* visitor) {
+    visitor->visit(this);
   }
 
   std::vector<Variable*> BranchInst::GetDefs() {
@@ -146,6 +184,10 @@ namespace L3 {
     return code.str();
   }
 
+  void BranchInst::accept(Visitor* visitor) {
+    visitor->visit(this);
+  }
+
   std::vector<Variable*> LoadInst::GetDefs() {
     return {lhs};
   }
@@ -158,6 +200,10 @@ namespace L3 {
     std::stringstream code;
     code << INDENT(1) << lhs->name << " <- load " << rhs->name << std::endl;
     return code.str();
+  }
+
+  void LoadInst::accept(Visitor* visitor) {
+    visitor->visit(this);
   }
 
   std::vector<Variable*> StoreInst::GetDefs() {
@@ -176,6 +222,10 @@ namespace L3 {
     std::stringstream code;
     code << INDENT(1) << "store " << lhs->name << " <- " << rhs->name << std::endl;
     return code.str();
+  }
+
+  void StoreInst::accept(Visitor* visitor) {
+    visitor->visit(this);
   }
 
   std::vector<Variable*> CallInst::GetDefs() {
@@ -211,5 +261,9 @@ namespace L3 {
     }
     code << ")" << std::endl;
     return code.str();
+  }
+
+  void CallInst::accept(Visitor* visitor) {
+    visitor->visit(this);
   }
 }
