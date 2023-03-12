@@ -135,7 +135,7 @@ namespace LivenessAnalysis {
     for(auto inst : function->instructions) {
       DEBUG_COUT << inst->ToString() << in_set[inst] << out_set[inst];
     }
-    DEBUG_COUT << counter << "times\n";
+    DEBUG_COUT << counter << " times\n";
 #endif
   }
 

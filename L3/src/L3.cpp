@@ -3,8 +3,13 @@
 #include <vector>
 #include <sstream>
 #include "utils.hpp"
+#include "visitor.hpp"
 
 namespace L3 {
+  void Item::accept(Visitor* visitor) {
+    visitor->visit(this);
+  }
+
   Label::Label(std::string name) {
     this->name = name;
     this->type = ItemType::kLabel;
@@ -28,6 +33,10 @@ namespace L3 {
   Number::Number(std::string name) {
     this->name = name;
     this->type = ItemType::kNumber;
+  }
+
+   void Instruction::accept(Visitor* visitor) {
+    visitor->visit(this);
   }
 
   std::vector<Variable*> AssignInst::GetDefs() {

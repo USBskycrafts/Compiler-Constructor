@@ -17,6 +17,7 @@
 #include "parser.hpp"
 #include "liveness-analysis.hpp"
 #include "utils.hpp"
+#include "tiling.hpp"
 
 
 bool log_open = false;
@@ -82,6 +83,11 @@ int main(
    */
   for(auto f : p.functions) {
     LivenessAnalysis::Analyze(f);
+    auto contexts = Tiling::GenerateContext(f);
+    for(auto context : contexts) {
+      auto trees = Tiling::GenerateTree(context);
+      trees = Tiling::MergingTree(trees);
+    }
   }
   
 

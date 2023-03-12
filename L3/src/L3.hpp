@@ -4,6 +4,8 @@
 #include <vector>
 
 namespace L3 {
+  class Visitor;
+
   enum class ItemType {
     kVariable,
     kLabel,
@@ -14,6 +16,7 @@ namespace L3 {
 
   class Item {
     public:
+      virtual void accept(Visitor* visitor);
       std::string name;
       ItemType type;
   };
@@ -45,6 +48,7 @@ namespace L3 {
 
   class Instruction {
     public:
+      virtual void accept(Visitor* visitor);
       virtual std::vector<Variable*> GetDefs() = 0;
       virtual std::vector<Variable*> GetUses() = 0;
       virtual std::string ToString() = 0;
