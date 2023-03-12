@@ -10,7 +10,7 @@
 namespace Tiling {
 
   LivenessAnalysis::AnalysisResult result;
-
+#ifdef DEBUG
   void PrintTree(Tree* tree) {
     DEBUG_COUT << "{\n";
     std::queue<Node*> nodes;
@@ -28,6 +28,7 @@ namespace Tiling {
     }
     log_open && std::cerr << "}\n";
   }
+#endif
 
   std::vector<Context> GenerateContext(L3::Function* function) {
     std::vector<Context> contexts;
@@ -390,4 +391,115 @@ success:
     std::copy(result.out_set[inst].begin(), result.out_set[inst].end(), std::inserter(tree->outs, tree->outs.begin()));
   }
 
+  std::vector<Node*> AssignTile::Matches(Node* node) {
+    try {
+      // matches lhs
+      if(node->code[0] != '%') {
+        throw "";
+      }
+      // matches "<-"
+      auto children = node->children;
+      if(children.size() != 1 || children[0]->code != "<-") {
+        throw "";
+      }
+      // matches s
+      children = children[0]->children;
+      if(children.size() != 1) {
+        throw "";
+      }
+      return children;
+    } catch(...) {
+      return {};
+    }
+  }
+
+  std::vector<std::string> AssignTile::GenerateCode(Node* node) {
+    std::vector<std::string> codes;
+    if(Matches(node).empty()) {
+      DEBUG_COUT << "node does not matches\n";
+      return {};
+    }
+    std::stringstream code;
+    code << INDENT(2) << node->code << " <- ";
+    auto children = node->children[0]->children;
+    code << children[0]->code << "\n";
+    codes.push_back(code.str());
+    return codes;
+  }
+
+  std::vector<Node*> BinaryTile::Matches(Node* node) {
+    try {
+      // matches lhs
+      if(node->code[0] != '%') {
+        throw "";
+      }
+      DEBUG_COUT << "lhs matched\n";
+      // matches operator
+      auto children = node->children;
+      std::set<std::string> op_tile {"+", "-", "*", "&", "<<", ">>"};
+      if(children.size() != 1 && op_tile.count(children[0]->code)) {
+        throw "";
+      }
+      DEBUG_COUT << "operator matched\n";
+      // matches t1 op t2
+      children = children[0]->children;
+      if(children.size() != 2) {
+        throw "";
+      }
+      DEBUG_COUT << "rhs matched\n";
+      return children;
+    } catch(...) {
+      return {};
+    }
+  }
+
+  std::vector<std::string> BinaryTile::GenerateCode(Node* node) {
+    std::vector<std::string> codes;
+    if(Matches(node).empty()) {
+      DEBUG_COUT << "node does not matches\n";
+      return {};
+    }
+    std::stringstream code;
+    code << INDENT(2) << node->code;
+    std::string op = node->children[0]->code;
+    auto children = node->children[0]->children;
+    if(children[0]->code[0] == '%' && children[0]->code == node->code) { //%var <- %var + t
+      code << (' ' + op + "= ") << children[1]->code << "\n";
+      codes.push_back(code.str());
+    } else if(children[1]->code[0] == '%' && children[1]->code == node->code) { //%var <- t [+|*|&|-] %var 
+      if(op == "+" || op == "&" || op == "*") {
+        code << (' ' + op + "= ") << children[0]->code << "\n";
+      } else if(op == "-") {
+        code << " *= -1\n";
+        codes.push_back(code.str());
+        code.clear();
+        code << INDENT(2) << node->code << " += " << children[0]->code << "\n";
+        codes.push_back(code.str());
+      } else {
+        DEBUG_COUT << "operator type error\n";
+        abort();
+      }
+    } else if(children[0]->code[0] != '%' && children[1]->code[0] != '%') { //%var <- number + number
+      auto t1 = std::stoll(children[0]->code), t2 = std::stoll(children[1]->code);
+      if(op == "+") {
+        code << " <- " << std::to_string(t1 + t2) << "\n";
+      } else if(op == "-") {
+        code << " <- " << std::to_string(t1 - t2) << "\n";
+      } else if(op == "*") {
+        code << " <- " << std::to_string(t1 - t2) << "\n";
+      } else if(op == "&") {
+        code << " <- " << std::to_string(t1 & t2) << "\n";
+      } else {
+        DEBUG_COUT << "operator type error\n";
+        abort();
+      }
+    } else { //normal situation
+      code << " <- " << children[0]->code << "\n";
+      codes.push_back(code.str());
+      code.clear();
+      code << INDENT(2) << node->code << (' ' + op + "= ") << children[1]->code << "\n";
+      codes.push_back(code.str());
+    }
+    return codes;
+  }
 }

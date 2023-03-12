@@ -1,7 +1,5 @@
 define @main(%self, %a, %b) {
-  %v <- 0
-  %temp1 <- %a + %a
-  %temp2 <- %temp1 + %a
-  %temp3 <- %temp2 + %a
+  %var <- %x + 8
+  %b <- load %var
   return
 }

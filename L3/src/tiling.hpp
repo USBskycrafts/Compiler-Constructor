@@ -58,4 +58,22 @@ namespace Tiling {
   Tree* GenerateTree(L3::Instruction* inst);
 
   std::vector<Tree*> MergingTree(std::vector<Tree*> trees);
+
+  class Tile {
+    public:
+      virtual std::vector<Node*> Matches(Node* node) = 0;
+      virtual std::vector<std::string> GenerateCode(Node* node) = 0;
+  };
+
+  class AssignTile : public Tile {
+    public:
+      std::vector<Node*> Matches(Node* node) override;
+      std::vector<std::string> GenerateCode(Node* node) override;
+  };
+
+  class BinaryTile : public Tile {
+    public:
+      std::vector<Node*> Matches(Node* node) override;
+      std::vector<std::string> GenerateCode(Node* node) override;
+  };
 }
